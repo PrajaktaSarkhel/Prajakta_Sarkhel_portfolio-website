@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Moon, Sun, Github, Linkedin, Mail, FileText, Award, Code, 
+import { Moon, Sun, Github, Linkedin, Mail, Twitter, Instagram, FileText, Award, Code, 
   Briefcase, Calendar, Trophy, BookOpen, Zap, Send, Sparkles, 
   Lightbulb, Target, Rocket, Heart, Coffee, Palette, Image as ImageIcon } from 'lucide-react';
 
@@ -7,9 +7,11 @@ import {
   SiJavascript, SiTypescript, SiPython, SiCplusplus, SiC,
   SiReact, SiNextdotjs, SiTailwindcss, SiHtml5, SiCss3,
   SiNodedotjs, SiMongodb, SiPostgresql, SiExpress,
-  SiGit, SiGithub, SiVisualstudiocode, SiVercel, SiPostman
+  SiGit, SiGithub, SiVercel, SiPostman
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
+import { VscCode } from "react-icons/vsc";
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -77,11 +79,44 @@ function App() {
   );
 
   const journeyItems = [
-    { date: 'September 2025', title: 'Presented at TSEC 2025, IIM Calcutta', desc: 'Led team presentation for PosturePro at a national-level tech event, showcasing hardware-software integration to industry experts.', color: 'blue', icon: Trophy },
-    { date: 'February - September 2025', title: 'Published 2 Research Papers', desc: 'Published research on dark mode energy conservation (NCCCI-2025) and biomedical materials (AICTE-VAANI).', color: 'purple', icon: BookOpen },
-    { date: 'May - June 2025', title: 'Built Eunoia Wellness App', desc: 'Developed a mental wellness application using Web Audio API with mood-based audio generation.', color: 'green', icon: Code },
-    { date: '2024 - Present', title: 'Started B.Tech Journey', desc: 'Began CS studies at Asansol Engineering College, maintaining 8.68 SGPA while solving 100+ LeetCode problems.', color: 'pink', icon: Rocket }
+    { 
+      date: 'September 2025', 
+      title: 'Presented at TSEC 2025, IIM Calcutta', 
+      desc: 'Led team presentation for PosturePro at a national-level tech event.',
+      gradient: 'from-blue-500 to-blue-600',
+      bg: 'bg-blue-100 dark:bg-blue-900',
+      text: 'text-blue-600 dark:text-blue-400',
+      icon: Trophy 
+    },
+    { 
+      date: 'February - September 2025', 
+      title: 'Published 2 Research Papers', 
+      desc: 'Published research on dark mode energy conservation and biomedical materials.',
+      gradient: 'from-purple-500 to-purple-600',
+      bg: 'bg-purple-100 dark:bg-purple-900',
+      text: 'text-purple-600 dark:text-purple-400',
+      icon: BookOpen 
+    },
+    { 
+      date: 'May - June 2025', 
+      title: 'Built Eunoia Wellness App', 
+      desc: 'Developed mental wellness application using Web Audio API.',
+      gradient: 'from-green-500 to-green-600',
+      bg: 'bg-green-100 dark:bg-green-900',
+      text: 'text-green-600 dark:text-green-400',
+      icon: Code 
+    },
+    { 
+      date: '2024 - Present', 
+      title: 'Started B.Tech Journey', 
+      desc: 'Began CS studies, maintaining 8.68 SGPA while solving 100+ LeetCode problems.',
+      gradient: 'from-orange-500 to-red-500',
+      bg: 'bg-orange-100 dark:bg-orange-900',
+      text: 'text-orange-600 dark:text-orange-400',
+      icon: Rocket 
+    }
   ];
+
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
@@ -96,6 +131,7 @@ function App() {
             <a href="#about" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">About</a>
             <a href="#journey" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Journey</a>
             <a href="#projects" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Projects</a>
+            <a href="#research" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Research</a>
             <a href="#art" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Art</a>
             <a href="#contact" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Contact</a>
             <button
@@ -117,7 +153,7 @@ function App() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
           <div className="flex-1 space-y-6">
             <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full">
-              <span className="text-sm text-blue-600 dark:text-blue-400 font-bold flex items-center gap-2">
+              <span className="text-sm text-blue-600 dark:text-blue-400 font-bold flex items-center gap-2 animate-pulse">
                 <Sparkles className="w-4 h-4" />
                 Available for Internships
               </span>
@@ -173,9 +209,25 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">About Me</h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Combining technical innovation with creative expression
-            </p>
+            {/* About Me Content */}
+            <div className="max-w-4xl mx-auto mt-8 text-left px-4">
+              <p className="text-gray-800 dark:text-white text-lg leading-normal mb-6">
+                I’m <span className="text-gray-800 dark:text-white font-semibold">Prajakta Sarkhel</span>, a passionate developer from <span className="text-gray-800 dark:text-white font-semibold">West Bengal, India</span>, with a strong interest in building clean and user-focused web applications. I have a solid foundation in <span className="text-gray-800 dark:text-white font-semibold">DSA, Competitive Programming, and core CS subjects</span>.
+              </p>
+
+              <p className="text-gray-800 dark:text-white text-lg leading-normal mb-6">
+                Currently, I’m focused on improving my full-stack development skills while working on real-world projects. When I’m not coding, I’m usually exploring new ideas, tools, or ways to improve my workflow. I also have a deep interest in <span className="text-gray-800 dark:text-white font-semibold">handmade Fine Arts</span>, which helps me stay focused for long hours and cultivate patience and creativity.
+              </p>
+
+              <p className="text-gray-800 dark:text-white text-lg leading-normal mb-6">
+                I have also held <span className="text-gray-800 dark:text-white font-semibold">leadership roles</span> in two of the most renowned clubs at my college, as well as during my school days.
+              </p>
+
+              <p className="text-gray-800 dark:text-white italic text-base">
+                Fun fact about me: I love maths. Though most of us find it intimidating, since childhood I’ve felt maths is more like a game, one that sharpens my thinking and problem-solving skills.
+              </p>
+            </div>
+
           </div>
           
           {/* ENHANCED EDUCATION SECTION */}
@@ -246,51 +298,177 @@ function App() {
             </div>
           </div>
 
-          {/* Enhanced Skills */}
-          <div className="mb-12">
-            <h4 className="text-2xl font-semibold mb-8 text-gray-800 dark:text-gray-200 flex items-center gap-2">
-              <Zap className="w-6 h-6 text-yellow-500" />
-              Technical Skills
+          {/* TECH STACK WITH REAL LOGOS */}
+          <div className="mb-16">
+            <h4 className="text-3xl font-bold mb-10 text-gray-800 dark:text-white flex items-center justify-center gap-3">
+              <Zap className="w-8 h-8 text-yellow-500" />
+              <span style={{paddingBottom: '4px'}}>Tech Stack</span>
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="group p-6 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all">
-                <Code className="w-8 h-8 text-blue-500 mb-4" />
-                <h5 className="font-bold mb-3 dark:text-white text-lg">Languages</h5>
-                <div className="flex flex-wrap gap-2">
-                  {['C', 'C++', 'Python', 'JavaScript', 'Java'].map(lang => (
-                    <span key={lang} className="px-3 py-1 bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full text-xs font-medium">
-                      {lang}
-                    </span>
-                  ))}
+  
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    
+              {/* Languages */}
+              <div className="p-6 rounded-3xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all">
+                <h5 className="text-xl font-bold mb-6 dark:text-white flex items-center gap-2">
+                  <Code className="w-5 h-5 text-blue-500" />
+                  Languages
+                </h5>
+                <div className="flex flex-wrap gap-3">
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiJavascript className="w-8 h-8 text-yellow-400" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      JavaScript
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiTypescript className="w-8 h-8 text-blue-600" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      TypeScript
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiPython className="w-8 h-8 text-blue-500" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Python
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiC className="w-8 h-8 text-blue-700" />
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      C
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiCplusplus className="w-8 h-8 text-blue-600" />
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      C++
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <FaJava className="w-8 h-8 text-red-600" />
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Java
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              <div className="group p-6 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all">
-                <Briefcase className="w-8 h-8 text-purple-500 mb-4" />
-                <h5 className="font-bold mb-3 dark:text-white text-lg">Web Tech</h5>
-                <div className="flex flex-wrap gap-2">
-                  {['HTML5', 'CSS3', 'Tailwind', 'JavaScript', 'React'].map(tech => (
-                    <span key={tech} className="px-3 py-1 bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 rounded-full text-xs font-medium">
-                      {tech}
-                    </span>
-                  ))}
+
+              {/* Frontend */}
+              <div className="p-6 rounded-3xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all">
+                <h5 className="text-xl font-bold mb-6 dark:text-white flex items-center gap-2">
+                  <Palette className="w-5 h-5 text-purple-500" />
+                    Frontend
+                </h5>
+                <div className="flex flex-wrap gap-3">
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiReact className="w-8 h-8 text-cyan-400" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      React
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiNextdotjs className="w-8 h-8 text-black dark:text-white" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Next.js
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiTailwindcss className="w-8 h-8 text-cyan-500" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Tailwind
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiHtml5 className="w-8 h-8 text-orange-600" />
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      HTML
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiCss3 className="w-8 h-8 text-blue-600" />
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      CSS
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              <div className="group p-6 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-105 transition-all">
-                <Award className="w-8 h-8 text-green-500 mb-4" />
-                <h5 className="font-bold mb-3 dark:text-white text-lg">Learning</h5>
-                <div className="flex flex-wrap gap-2">
-                  {['Next.js', 'MongoDB', 'TypeScript'].map(tech => (
-                    <span key={tech} className="px-3 py-1 bg-green-500/10 dark:bg-green-500/20 text-green-600 dark:text-green-400 rounded-full text-xs font-medium">
-                      {tech}
-                    </span>
-                  ))}
+
+              {/* Backend */}
+              <div className="p-6 rounded-3xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all">
+                <h5 className="text-xl font-bold mb-6 dark:text-white flex items-center gap-2">
+                  <Briefcase className="w-5 h-5 text-green-500" />
+                    Backend
+                </h5>
+                <div className="flex flex-wrap gap-3">
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiNodedotjs className="w-8 h-8 text-green-600" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Node.js
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiExpress className="w-8 h-8 text-gray-700 dark:text-gray-300" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100   transition-opacity whitespace-nowrap">
+                      Express
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiMongodb className="w-8 h-8 text-green-500" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      MongoDB
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiPostgresql className="w-8 h-8 text-blue-700" />
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      PostgreSQL
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              {/* Tools */}
+              <div className="p-6 rounded-3xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all">
+                <h5 className="text-xl font-bold mb-6 dark:text-white flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-orange-500" />
+                  Tools
+                </h5>
+                <div className="flex flex-wrap gap-3">
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiGit className="w-8 h-8 text-orange-600" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Git
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiGithub className="w-8 h-8 text-black dark:text-white" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      GitHub
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <VscCode className="w-8 h-8 text-blue-500" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      VS Code
+                    </div>
+                  </div>
+                  <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiVercel className="w-8 h-8 text-black dark:text-white" />
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Vercel
+                    </div>
+                  </div>
+                  {/*<div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
+                    <SiPostman className="w-8 h-8 text-orange-500" />
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Postman
+                    </div>
+                  </div>*/}
+                </div>
+              </div>
+
             </div>
           </div>
-
           {/* Enhanced Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-8 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-200 dark:border-blue-900 hover:scale-105 transition-all">
@@ -336,7 +514,7 @@ function App() {
                 }`}
               >
                 <div className="flex flex-col items-center">
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-${item.color}-500 to-${item.color}-600 flex items-center justify-center text-white shadow-lg group-hover:scale-125 group-hover:rotate-12 transition-all duration-500`}>
+                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-lg group-hover:scale-125 group-hover:rotate-12 transition-all duration-500`}>
                     <item.icon className="w-8 h-8" />
                   </div>
                   {idx !== journeyItems.length - 1 && (
@@ -345,10 +523,10 @@ function App() {
                 </div>
                 <div className="flex-1 pb-12">
                   <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl border-2 border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500">
-                    <span className={`text-sm font-bold text-${item.color}-600 dark:text-${item.color}-400 bg-${item.color}-100 dark:bg-${item.color}-900 px-4 py-2 rounded-full`}>
+                    <span className={`text-sm font-bold ${item.text} ${item.bg} px-4 py-2 rounded-full inline-block`}>
                       {item.date}
                     </span>
-                    <h4 className="text-2xl font-black mt-4 mb-3 dark:text-white">{item.title}</h4>
+                    <h4 className="text-2xl font-black mt-4 mb-3 dark:text-white" style={{paddingBottom: '2px'}}>{item.title}</h4>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
@@ -618,6 +796,24 @@ function App() {
                 <Github className="w-6 h-6" />
                 GitHub
               </a>
+              <a
+                href="https://x.com/@me_sinisterr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 px-8 py-4 border-2 border-gray-300 dark:border-gray-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:scale-105 transition-all dark:text-white font-bold"
+              >
+                <Twitter className="w-6 h-6" />
+                Twitter
+              </a>
+              <a
+                href="https://instagram.com/@me_sinister"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 px-8 py-4 border-2 border-gray-300 dark:border-gray-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:scale-105 transition-all dark:text-white font-bold"
+              >
+                <Instagram className="w-6 h-6" />
+                Instagram
+              </a>
 
               {/* Animated Avatar */}
               <div className="relative mt-8">
@@ -707,7 +903,7 @@ function App() {
                   Thank You!
                 </h3>
                 <p className="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  I appreciate you taking the time to explore my work. Whether you're here to collaborate, hire, or just browse—your visit means a lot! 💙
+                  I appreciate you taking the time to explore my work. Whether you're here to collaborate, hire, or just browse, your visit means a lot! 💙
                 </p>
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
                   Let's build something amazing together! 🚀
@@ -750,6 +946,12 @@ function App() {
           {/* Social Links - Better Design */}
           <div className="flex justify-center gap-6 mb-12">
             <a 
+              href="mailto:prajaktasarkhel@gmail.com" 
+              className="group p-4 bg-gray-800 hover:bg-gray-700 rounded-2xl transition-all hover:scale-110 hover:shadow-lg hover:shadow-orange-500/50"
+            >
+              <Mail className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors" />
+            </a>
+            <a 
               href="https://github.com/PrajaktaSarkhel" 
               target="_blank" 
               rel="noopener noreferrer" 
@@ -766,11 +968,23 @@ function App() {
               <Linkedin className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors" />
             </a>
             <a 
-              href="mailto:prajaktasarkhel@gmail.com" 
+              href="https://x.com/@me_sinisterr" 
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="group p-4 bg-gray-800 hover:bg-gray-700 rounded-2xl transition-all hover:scale-110 hover:shadow-lg hover:shadow-purple-500/50"
             >
-              <Mail className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors" />
+              <Twitter className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors" />
             </a>
+            <a 
+              href="https://instagram.com/@me_sinister" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="group p-4 bg-gray-800 hover:bg-gray-700 rounded-2xl transition-all hover:scale-110 hover:shadow-lg hover:shadow-pink-500/50"
+            >
+              <Instagram className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors" />
+            </a>
+
+            
           </div>
 
           {/* Copyright */}
