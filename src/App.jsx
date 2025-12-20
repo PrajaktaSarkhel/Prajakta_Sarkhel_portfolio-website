@@ -21,6 +21,9 @@ function App() {
   
   const journeyRefs = useRef([]);
 
+  const projectRefs = useRef([]);
+  const [visibleProjects, setVisibleProjects] = useState([]);
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -49,6 +52,29 @@ function App() {
 
     return () => observers.forEach(observer => observer.disconnect());
   }, []);
+
+  // Scroll animation for project cards
+  useEffect(() => {
+    const observers = projectRefs.current.map((ref, index) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              setVisibleProjects(prev => [...new Set([...prev, index])]);
+            }, index * 300); // Stagger by 300ms
+          }
+        },
+        { threshold: 0.1 }
+      );
+      
+      if (ref) observer.observe(ref);
+      return observer;
+    });
+
+    return () => observers.forEach(observer => observer.disconnect());
+  }, []);
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -209,94 +235,123 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">About Me</h3>
+          </div>
+        </div>
             {/* About Me Content */}
-            <div className="max-w-4xl mx-auto mt-8 text-left px-4">
-              <p className="text-gray-800 dark:text-white text-lg leading-normal mb-6">
-                I’m <span className="text-gray-800 dark:text-white font-semibold">Prajakta Sarkhel</span>, a passionate developer from <span className="text-gray-800 dark:text-white font-semibold">West Bengal, India</span>, with a strong interest in building clean and user-focused web applications. I have a solid foundation in <span className="text-gray-800 dark:text-white font-semibold">DSA, Competitive Programming, and core CS subjects</span>.
-              </p>
-
-              <p className="text-gray-800 dark:text-white text-lg leading-normal mb-6">
-                Currently, I’m focused on improving my full-stack development skills while working on real-world projects. When I’m not coding, I’m usually exploring new ideas, tools, or ways to improve my workflow. I also have a deep interest in <span className="text-gray-800 dark:text-white font-semibold">handmade Fine Arts</span>, which helps me stay focused for long hours and cultivate patience and creativity.
-              </p>
-
-              <p className="text-gray-800 dark:text-white text-lg leading-normal mb-6">
-                I have also held <span className="text-gray-800 dark:text-white font-semibold">leadership roles</span> in two of the most renowned clubs at my college, as well as during my school days.
-              </p>
-
-              <p className="text-gray-800 dark:text-white italic text-base">
-                Fun fact about me: I love maths. Though most of us find it intimidating, since childhood I’ve felt maths is more like a game, one that sharpens my thinking and problem-solving skills.
-              </p>
-            </div>
-
-          </div>
+            
+            <div className="max-w-4xl mx-auto">
+              <div className="p-10 rounded-2xl bg-[#f2e9e4] dark:bg-[#22223b] border border-[#c9ada7] dark:border-[#4a4e69]">
+                
+                {/* Main intro */}
+                <div className="space-y-6 text-[#22223b] dark:text-[#f2e9e4] leading-normal">
+                  <p className="text-lg">
+                    I'm <span className="font-bold text-[#4a4e69] dark:text-[#c9ada7]">Prajakta Sarkhel</span>, a passionate developer from <span className="font-semibold">West Bengal, India</span>, with a strong interest in building clean, user-focused web applications. I have a solid foundation in DSA, CP, and CS core subjects.
+                  </p>
+                  
+                  <p className="text-lg">
+                    Currently, I'm focused on improving my <span className="font-semibold text-[#4a4e69] dark:text-[#c9ada7]">full-stack development skills</span> while working on real-world projects. When I'm not coding, I'm usually exploring new ideas, tools, or ways to improve my workflow.
+                  </p>
+                  
+                  {/* Creative Balance */}
+                  <div className="pt-4 border-t border-[#9a8c98]/30">
+                    <p className="text-lg flex items-start gap-2">
+                      <span className="text-2xl">🎨</span>
+                      <span>
+                        I have a deep interest in <span className="font-semibold text-[#4a4e69] dark:text-[#c9ada7]">handmade fine arts</span>, which helps me stay focused for long hours and cultivate patience and creativity.
+                      </span>
+                    </p>
+                  </div>
+                  
+                  {/* Leadership */}
+                  <div className="pt-4 border-t border-[#9a8c98]/30">
+                    <p className="text-lg flex items-start gap-2">
+                      <span className="text-2xl">🏆</span>
+                      <span>
+                        I have held leadership roles in two of the most renowned clubs at my college and also during school days.
+                      </span>
+                    </p>
+                  </div>
+                  
+                  {/* Fun Fact - Simple and Elegant */}
+                  <div className="pt-6 mt-6 border-t-2 border-[#9a8c98]/40">
+                    <p className="text-lg italic text-[#4a4e69] dark:text-[#9a8c98] flex items-start gap-2">
+                      <span className="text-2xl not-italic">💡</span>
+                      <span>
+                        <span className="font-semibold not-italic">Fun Fact:</span> I love maths! Though most of us find it intimidating, since childhood I've felt that maths is more like a game, one that sharpens my thinking and problem-solving skills.
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            
           
-          {/* ENHANCED EDUCATION SECTION */}
-          <div className="mb-16">
-            <h4 className="text-3xl font-bold mb-10 text-gray-800 dark:text-white flex items-center justify-center gap-3">
-              <BookOpen className="w-8 h-8 text-blue-500" />
-              <span style={{paddingBottom: '4px'}}>Education</span>
-            </h4>
-            <div className="space-y-8">
-              {/* Main B.Tech Card */}
-              <div className="group relative p-8 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 text-white hover:shadow-2xl transition-all hover:scale-[1.02] overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 group-hover:scale-150 transition-transform duration-700"></div>
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full -ml-24 -mb-24 group-hover:scale-150 transition-transform duration-700"></div>
-      
-                <div className="relative z-10">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
-                    <div>
-                      <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur rounded-full mb-4">
-                        <span className="text-sm font-bold">Current</span>
+              {/* ENHANCED EDUCATION SECTION */}
+              <div className="mb-16">
+                <h4 className="text-3xl font-bold mb-10 mt-16 text-gray-800 dark:text-white flex items-center justify-center gap-3">
+                  <BookOpen className="w-8 h-8 text-blue-500" />
+                  <span style={{paddingBottom: '4px'}}>Education</span>
+                </h4>
+                <div className="space-y-8">
+                  {/* Main B.Tech Card */}
+                  <div className="group relative p-8 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 text-white hover:shadow-2xl transition-all hover:scale-[1.02] overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 group-hover:scale-150 transition-transform duration-700"></div>
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full -ml-24 -mb-24 group-hover:scale-150 transition-transform duration-700"></div>
+          
+                    <div className="relative z-10">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+                        <div>
+                          <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur rounded-full mb-4">
+                            <span className="text-sm font-bold">Current</span>
+                          </div>
+                          <h5 className="text-3xl font-black mb-3">B.Tech in Computer Science</h5>
+                          <p className="text-blue-100 text-lg font-medium">Asansol Engineering College, West Bengal</p>
+                        </div>
+                        <span className="px-6 py-3 bg-white/30 backdrop-blur rounded-full text-lg font-black shadow-lg">2024-2028</span>
                       </div>
-                      <h5 className="text-3xl font-black mb-3">B.Tech in Computer Science</h5>
-                      <p className="text-blue-100 text-lg font-medium">Asansol Engineering College, West Bengal</p>
+                      <div className="flex items-center gap-4 p-6 bg-white/20 backdrop-blur rounded-2xl">
+                        <Trophy className="w-10 h-10" />
+                        <div>
+                          <p className="text-sm text-blue-100 mb-1">Semester GPA</p>
+                          <p className="text-4xl font-black">8.68/10</p>
+                        </div>
+                      </div>
                     </div>
-                    <span className="px-6 py-3 bg-white/30 backdrop-blur rounded-full text-lg font-black shadow-lg">2024-2028</span>
                   </div>
-                  <div className="flex items-center gap-4 p-6 bg-white/20 backdrop-blur rounded-2xl">
-                    <Trophy className="w-10 h-10" />
-                    <div>
-                      <p className="text-sm text-blue-100 mb-1">Semester GPA</p>
-                      <p className="text-4xl font-black">8.68/10</p>
+
+                  {/* Secondary Education Cards */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="group relative p-8 rounded-3xl bg-white dark:bg-gray-800 border-2 border-purple-200 dark:border-purple-800 hover:shadow-xl hover:border-purple-400 dark:hover:border-purple-600 transition-all hover:scale-105 overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                      <div className="relative">
+                        <div className="flex items-center gap-3 mb-6">
+                          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <Award className="w-6 h-6 text-white" />
+                          </div>
+                          <span className="px-4 py-1 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full text-sm font-bold">2021-23</span>
+                        </div>
+                        <h5 className="text-2xl font-bold dark:text-white mb-2">Higher Secondary</h5>
+                        <p className="text-gray-600 dark:text-gray-300 mb-4">Auxilium Convent School</p>
+                        <div className="text-4xl font-black text-purple-600 dark:text-purple-400">92.25%</div>
+                      </div>
+                    </div>
+
+                    <div className="group relative p-8 rounded-3xl bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-800 hover:shadow-xl hover:border-green-400 dark:hover:border-green-600 transition-all hover:scale-105 overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                      <div className="relative">
+                        <div className="flex items-center gap-3 mb-6">
+                          <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <Award className="w-6 h-6 text-white" />
+                          </div>
+                          <span className="px-4 py-1 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 rounded-full text-sm font-bold">2009-21</span>
+                        </div>
+                        <h5 className="text-2xl font-bold dark:text-white mb-2">Secondary</h5>
+                        <p className="text-gray-600 dark:text-gray-300 mb-4">Mount Carmel School</p>
+                        <div className="text-4xl font-black text-green-600 dark:text-green-400">96.4%</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Secondary Education Cards */}
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="group relative p-8 rounded-3xl bg-white dark:bg-gray-800 border-2 border-purple-200 dark:border-purple-800 hover:shadow-xl hover:border-purple-400 dark:hover:border-purple-600 transition-all hover:scale-105 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <Award className="w-6 h-6 text-white" />
-                      </div>
-                      <span className="px-4 py-1 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full text-sm font-bold">2021-23</span>
-                    </div>
-                    <h5 className="text-2xl font-bold dark:text-white mb-2">Higher Secondary</h5>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">Auxilium Convent School</p>
-                    <div className="text-4xl font-black text-purple-600 dark:text-purple-400">92.25%</div>
-                  </div>
-                </div>
-
-                <div className="group relative p-8 rounded-3xl bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-800 hover:shadow-xl hover:border-green-400 dark:hover:border-green-600 transition-all hover:scale-105 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                  <div className="relative">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <Award className="w-6 h-6 text-white" />
-                      </div>
-                      <span className="px-4 py-1 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 rounded-full text-sm font-bold">2009-21</span>
-                    </div>
-                    <h5 className="text-2xl font-bold dark:text-white mb-2">Secondary</h5>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">Mount Carmel School</p>
-                    <div className="text-4xl font-black text-green-600 dark:text-green-400">96.4%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* TECH STACK WITH REAL LOGOS */}
           <div className="mb-16">
@@ -334,7 +389,7 @@ function App() {
                   </div>
                   <div className="group relative p-3 bg-gray-50 dark:bg-gray-900 rounded-xl hover:scale-110 transition-all cursor-default">
                     <SiC className="w-8 h-8 text-blue-700" />
-                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                       C
                     </div>
                   </div>
@@ -495,11 +550,14 @@ function App() {
       <SectionDivider icon={Calendar} text="Building My Path" />
 
       {/* NEW: Journey Timeline Section */}
+      {/* JOURNEY SECTION WITH SCROLL ANIMATION */}
       <section id="journey" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-20">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">My Journey</h3>
-            <p className="text-gray-600 dark:text-gray-300">Key milestones that shaped my path 🚀</p>
+            <h3 className="text-5xl font-black mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent" style={{paddingBottom: '4px'}}>
+              My Journey
+            </h3>
+            <p className="text-xl text-gray-600 dark:text-gray-300">Key milestones that shaped my path 🚀</p>
           </div>
           
           <div className="space-y-12">
@@ -526,7 +584,9 @@ function App() {
                     <span className={`text-sm font-bold ${item.text} ${item.bg} px-4 py-2 rounded-full inline-block`}>
                       {item.date}
                     </span>
-                    <h4 className="text-2xl font-black mt-4 mb-3 dark:text-white" style={{paddingBottom: '2px'}}>{item.title}</h4>
+                    <h4 className="text-2xl font-black mt-4 mb-3 dark:text-white" style={{paddingBottom: '2px'}}>
+                      {item.title}
+                    </h4>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
@@ -535,6 +595,7 @@ function App() {
           </div>
         </div>
       </section>
+
       {/* SECTION DIVIDER */}
       <SectionDivider icon={Rocket} text="Featured Work" />
 
@@ -548,7 +609,14 @@ function App() {
           
           <div className="space-y-16">
             {/* Eunoia Project */}
-            <div className="group rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all">
+            <div 
+              ref={el => projectRefs.current[0] = el}
+              className={`group rounded-3xl overflow-hidden bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-1000 ${
+                visibleProjects.includes(0) 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-20'
+              }`}
+            >
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative h-80 md:h-auto overflow-hidden bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
                   <div className="absolute inset-0 bg-black/20"></div>
@@ -581,7 +649,14 @@ function App() {
             </div>
 
             {/* PosturePro Project */}
-            <div className="group rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all">
+            <div 
+              ref={el => projectRefs.current[1] = el}
+              className={`group rounded-3xl overflow-hidden bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-1000 ${
+                visibleProjects.includes(1) 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-20'
+              }`}
+>
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative h-80 md:h-auto overflow-hidden bg-gradient-to-br from-green-500 via-teal-500 to-blue-500 flex items-center justify-center md:order-2">
                   <div className="absolute inset-0 bg-black/20"></div>
