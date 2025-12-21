@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Moon, Sun, Github, Linkedin, Mail, Twitter, Instagram, FileText, Award, Code, 
-  Briefcase, Calendar, Trophy, BookOpen, Zap, Send, Sparkles, 
+  Briefcase, Calendar, Trophy, BookOpen, Zap, Send, Sparkles, Eye, 
   Lightbulb, Target, Rocket, Heart, Coffee, Palette, Image as ImageIcon } from 'lucide-react';
 
 import { 
@@ -22,7 +22,21 @@ function App() {
   const journeyRefs = useRef([]);
 
   const projectRefs = useRef([]);
+  const researchRefs = useRef([]);
+  const artRefs = useRef([]);
+  const contactRef = useRef(null);
+  const thankyouRef = useRef(null);
+
   const [visibleProjects, setVisibleProjects] = useState([]);
+  const [visibleResearch, setVisibleResearch] = useState([]);
+  const [visibleArt, setVisibleArt] = useState([]);
+  const [visibleContact, setVisibleContact] = useState(false);
+  const [visibleThankyou, setVisibleThankyou] = useState(false);
+
+  // For carousels
+  const [eunoiaSlide, setEunoiaSlide] = useState(0);
+  const [postureSlide, setPostureSlide] = useState(0);
+  const [artSlide, setArtSlide] = useState(0);
 
   useEffect(() => {
     if (darkMode) {
@@ -74,7 +88,91 @@ function App() {
     return () => observers.forEach(observer => observer.disconnect());
   }, []);
 
-  
+  // Research Publications Animation
+    useEffect(() => {
+      const observers = researchRefs.current.map((ref, index) => {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                setVisibleResearch(prev => [...new Set([...prev, index])]);
+              }, index * 200);
+            }
+          },
+          { threshold: 0.2 }
+        );
+        if (ref) observer.observe(ref);
+        return observer;
+      });
+      return () => observers.forEach(observer => observer.disconnect());
+    }, []);
+
+    // Art Section Animation
+    useEffect(() => {
+      const observers = artRefs.current.map((ref, index) => {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                setVisibleArt(prev => [...new Set([...prev, index])]);
+              }, index * 200);
+            }
+          },
+          { threshold: 0.2 }
+        );
+        if (ref) observer.observe(ref);
+        return observer;
+      });
+      return () => observers.forEach(observer => observer.disconnect());
+    }, []);
+
+    // Contact Form Animation
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => setVisibleContact(true), 200);
+          }
+        },
+        { threshold: 0.2 }
+      );
+      if (contactRef.current) observer.observe(contactRef.current);
+      return () => observer.disconnect();
+    }, []);
+
+    // Thank You Animation
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => setVisibleThankyou(true), 300);
+          }
+        },
+        { threshold: 0.2 }
+      );
+      if (thankyouRef.current) observer.observe(thankyouRef.current);
+      return () => observer.disconnect();
+    }, []);
+
+    const eunoiaImages = [
+                  '/eunoia_1.png',
+                  '/eunoia_2.png',
+                  '/eunoia_3.png',
+                  '/eunoia_4.png',
+                  '/eunoia_5.png'
+                ];
+    
+    const postureImages = [
+                  '/posturepro_1.png',
+                  '/posturepro_2.png',
+                ];
+
+    const artImages = [
+                '/art_1.png',
+                '/art_2.png',
+                '/art_3.png',
+                '/art_4.png'
+              ];            
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -85,6 +183,63 @@ function App() {
       setFormData({ name: '', email: '', message: '' });
       setFormStatus('');
     }, 2000);
+  };
+
+  // Image Carousel Component
+  const ImageCarousel = ({ images, currentSlide, setCurrentSlide }) => {
+    const nextSlide = () => {
+      setCurrentSlide((prev) => (prev + 1) % images.length);
+    };
+
+    const prevSlide = () => {
+      setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+    };
+
+    return (
+      <div className="relative h-full group">
+        <img
+          src={images[currentSlide]}
+          alt={`Slide ${currentSlide + 1}`}
+          className="w-full h-full object-cover transition-opacity duration-500"
+          onError={(e) => {
+            e.target.style.display = 'none';
+          }}
+        />
+        
+        {/* Navigation Arrows */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
+            >
+              ←
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
+            >
+              →
+            </button>
+            
+            {/* Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    idx === currentSlide 
+                      ? 'bg-white w-6' 
+                      : 'bg-white/50 hover:bg-white/80'
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    );
   };
 
   // Section Divider Component
@@ -207,14 +362,21 @@ function App() {
             </div>
           </div>
           
-          {/* PS Logo/Avatar - replace this div with an image */}
+          
           <div className="flex-1 flex justify-center">
             <div className="relative w-80 h-80">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl opacity-40 animate-pulse"></div>
-              {/* Replace this div with: <img src="/ps-avatar.png" alt="PS" className="..." /> */}
-              <div className="absolute inset-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-7xl font-black shadow-2xl hover:scale-110 transition-all duration-500">
-                PS
-              </div>
+             
+              <img 
+                    src="/prajakta_avatar.png" 
+                    alt="Prajakta" 
+                    className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-all rounded-full hover:scale-110 duration-500"
+                    onError={(e) => {
+                      // Fallback if image doesn't exist
+                      e.target.style.display = 'none';
+                    }}
+                  />
+              
               <div className="absolute top-0 right-0 p-3 bg-blue-500 rounded-full animate-bounce">
                 <Code className="w-6 h-6 text-white" />
               </div>
@@ -554,9 +716,7 @@ function App() {
       <section id="journey" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-20">
-            <h3 className="text-5xl font-black mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent" style={{paddingBottom: '4px'}}>
-              My Journey
-            </h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">My Journey</h3>
             <p className="text-xl text-gray-600 dark:text-gray-300">Key milestones that shaped my path 🚀</p>
           </div>
           
@@ -618,9 +778,15 @@ function App() {
               }`}
             >
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-80 md:h-auto overflow-hidden bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-black/20"></div>
-                  <div className="relative text-white text-5xl font-bold drop-shadow-lg">Eunoia</div>
+                {/* Eunoia Images Array */}
+                
+                <div className="relative h-80 md:h-auto overflow-hidden flex items-center justify-center">
+                  <ImageCarousel 
+                    images={eunoiaImages}
+                    currentSlide={eunoiaSlide}
+                    setCurrentSlide={setEunoiaSlide}
+                  />
+                  
                 </div>
                 <div className="p-8 sm:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4 flex-wrap">
@@ -639,9 +805,13 @@ function App() {
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <a href="https://github.com/PrajaktaSarkhel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium group">
+                    <a href="https://github.com/PrajaktaSarkhel/Eunoia" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium group">
                       <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       View Code
+                    </a>
+                    <a href="https://https://eunoia-navy.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium group">
+                      <Eye className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                      View Project
                     </a>
                   </div>
                 </div>
@@ -659,8 +829,14 @@ function App() {
 >
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative h-80 md:h-auto overflow-hidden bg-gradient-to-br from-green-500 via-teal-500 to-blue-500 flex items-center justify-center md:order-2">
-                  <div className="absolute inset-0 bg-black/20"></div>
-                  <div className="relative text-white text-5xl font-bold drop-shadow-lg">PosturePro</div>
+                  
+                  <ImageCarousel 
+                    images={postureImages}
+                    currentSlide={postureSlide}
+                    setCurrentSlide={setPostureSlide}
+                  />
+                
+                
                 </div>
                 <div className="p-8 sm:p-10 md:order-1 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4 flex-wrap">
@@ -685,8 +861,8 @@ function App() {
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <a href="https://github.com/PrajaktaSarkhel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium group">
-                      <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                     <a href="/PosturePro.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium group">
+                      <Eye className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       View Project
                     </a>
                   </div>
@@ -711,11 +887,18 @@ function App() {
           <div className="grid md:grid-cols-2 gap-8">
 
             {/* Dark Mode Paper - WITH DOWNLOAD */}
-            <div className="group p-6 rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-700 hover:shadow-2xl hover:scale-[1.02] transition-all">
+            <div 
+              ref={el => researchRefs.current[0] = el}
+              className={`group p-8 rounded-3xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 border-2 border-blue-200 dark:border-blue-800 hover:shadow-2xl transition-all duration-1000 ${
+                visibleResearch.includes(0)
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-20'
+              }`}
+            >
+            <div className="group p-6 rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 border-2 border-blue-200 dark:border-gray-700 hover:shadow-2xl hover:scale-[1.02] transition-all">
               <div className="flex items-start justify-between mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center">
-                  <FileText className="w-8 h-8 text-white" />
-                </div>
+                
+                <FileText className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 <span className="px-4 py-2 bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full text-sm font-bold">Published</span>
               </div>
               <h4 className="text-xl font-bold mb-3 dark:text-white">
@@ -738,8 +921,17 @@ function App() {
                 Download PDF
               </a>
             </div>
+            </div>
 
             {/* Biomedical Paper */}
+            <div 
+              ref={el => researchRefs.current[1] = el}
+              className={`group p-8 rounded-3xl bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 border-2 border-green-200 dark:border-green-800 hover:shadow-2xl transition-all duration-1000 ${
+                visibleResearch.includes(1)
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-20'
+              }`}
+            >
             <div className="group p-6 rounded-xl bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all hover:scale-[1.02]">
               <div className="flex items-start justify-between mb-4">
                 <FileText className="w-8 h-8 text-green-600 dark:text-green-400" />
@@ -754,13 +946,14 @@ function App() {
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
                 Published: September 2025
               </p>
-              <p className="text-xs text-blue-600 dark:text-blue-400 mb-6">
+              <p className="text-m text-blue-600 dark:text-blue-400 mb-6">
                 Utilized AI-generated visualizations for data representation
               </p>
               <button className="flex items-center gap-2 px-4 py-2 bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg cursor-not-allowed text-sm">
                 <FileText className="w-4 h-4" />
                 PDF Coming Soon
               </button>
+            </div>
             </div>
           </div>
         </div>
@@ -778,6 +971,14 @@ function App() {
               Helps me breathe, live, create and inspire 🎨
             </p>
           </div>
+          <div 
+            ref={el => artRefs.current[0] = el}
+            className={`relative transition-all duration-1000 ${
+              visibleArt.includes(0)
+                ? 'opacity-100 translate-x-0'
+                : 'opacity-0 translate-x-20'
+            }`}
+          >
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div className="space-y-6">
@@ -817,8 +1018,15 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-orange-500 rounded-3xl blur-2xl opacity-20 animate-pulse"></div>
               <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-8 border-2 border-pink-200 dark:border-pink-800 hover:shadow-2xl transition-all">
                 <div className="aspect-square bg-gradient-to-br from-pink-100 to-orange-100 dark:from-gray-700 dark:to-gray-600 rounded-2xl flex items-center justify-center mb-6">
-                  <ImageIcon className="w-32 h-32 text-pink-400 dark:text-pink-500" />
-                  <p className="absolute text-gray-500 dark:text-gray-400 font-medium">Art Gallery Coming Soon</p>
+                  <img 
+                    src="/drawing.png" 
+                    alt="Drawing" 
+                    className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      // Fallback if image doesn't exist
+                      e.target.style.display = 'none';
+                    }}
+                  />
                 </div>
                 <h5 className="text-lg font-bold mb-2 dark:text-white">Exploring Multiple Mediums</h5>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -826,6 +1034,7 @@ function App() {
                 </p>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -960,8 +1169,14 @@ function App() {
       </section>
 
       {/* THANK YOU SECTION WITH AVATAR HOLDING CARD */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto">
+      <section 
+      ref={thankyouRef}
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 relative overflow-hidden">
+        <div className={`max-w-4xl mx-auto transition-all duration-1000 ${
+          visibleThankyou
+            ? 'opacity-100 scale-100'
+            : 'opacity-0 scale-95'
+        }`}>
           <div className="flex flex-col md:flex-row items-center gap-12">
             {/* Avatar */}
             <div className="relative">

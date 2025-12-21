@@ -4,10 +4,43 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/ps_logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio-website</title>
+    <title>Prajakta Sarkhel | Portfolio</title>
   </head>
   <body>
     <div id="root"></div>
+
+    <script>
+      const titles = [
+        "Prajakta | Portfolio",
+        "Prajakta | Full-stack Developer",
+        "Prajakta | Software Engineer"
+      ];
+
+      let currentIndex = 0;
+      let titleInterval;
+
+      function rotateTitles() {
+        document.title = titles[currentIndex];
+        currentIndex = (currentIndex + 1) % titles.length;
+      }
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          // User switched to another tab - show static message
+          clearInterval(titleInterval);
+          document.title = "Hey there! 👋";
+        } else {
+          // User came back to the tab - resume rotation
+          currentIndex = 0;
+          rotateTitles();
+          titleInterval = setInterval(rotateTitles, 5000);
+        }
+      });
+
+      // Start rotating titles when page loads
+      rotateTitles();
+      titleInterval = setInterval(rotateTitles, 5000);
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
