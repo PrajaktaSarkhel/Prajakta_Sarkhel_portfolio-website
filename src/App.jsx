@@ -200,7 +200,8 @@ function App() {
         <img
           src={images[currentSlide]}
           alt={`Slide ${currentSlide + 1}`}
-          className="w-full h-full object-cover transition-opacity duration-500"
+          loading="lazy"
+          className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
           onError={(e) => {
             e.target.style.display = 'none';
           }}
@@ -317,6 +318,7 @@ function App() {
             <a href="#contact" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Contact</a>
             <button
               onClick={() => setDarkMode(!darkMode)}
+              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
               className="p-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-pink-500 transition-all hover:scale-110 hover:rotate-180 duration-500"
             >
               {darkMode ? <Sun className="w-4 h-4 text-white" /> : <Moon className="w-4 h-4 text-white" />}
@@ -784,9 +786,10 @@ function App() {
                   <ImageCarousel 
                     images={eunoiaImages}
                     currentSlide={eunoiaSlide}
+                    loading="lazy" // Add this
+                    className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
                     setCurrentSlide={setEunoiaSlide}
                   />
-                  
                 </div>
                 <div className="p-8 sm:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4 flex-wrap">
@@ -809,7 +812,7 @@ function App() {
                       <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       View Code
                     </a>
-                    <a href="https://https://eunoia-navy.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium group">
+                    <a href="https://eunoia-navy.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium group">
                       <Eye className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       View Project
                     </a>
@@ -828,15 +831,15 @@ function App() {
               }`}
 >
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-80 md:h-auto overflow-hidden bg-gradient-to-br from-green-500 via-teal-500 to-blue-500 flex items-center justify-center md:order-2">
-                  
+                <div className="relative h-80 md:h-auto overflow-hidden flex items-center justify-center md:order-2">
                   <ImageCarousel 
                     images={postureImages}
                     currentSlide={postureSlide}
+                    loading="lazy" // Add this
+                    className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
                     setCurrentSlide={setPostureSlide}
+                    
                   />
-                
-                
                 </div>
                 <div className="p-8 sm:p-10 md:order-1 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4 flex-wrap">
@@ -1020,7 +1023,8 @@ function App() {
                 <div className="aspect-square bg-gradient-to-br from-pink-100 to-orange-100 dark:from-gray-700 dark:to-gray-600 rounded-2xl flex items-center justify-center mb-6">
                   <img 
                     src="/drawing.png" 
-                    alt="Drawing" 
+                    alt="Drawing"
+                    loading="lazy" 
                     className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
                     onError={(e) => {
                       // Fallback if image doesn't exist
