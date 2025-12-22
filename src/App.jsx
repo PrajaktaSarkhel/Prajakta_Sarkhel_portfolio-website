@@ -187,62 +187,74 @@ function App() {
 
   // Image Carousel Component
   const ImageCarousel = ({ images, currentSlide, setCurrentSlide }) => {
-    const nextSlide = () => {
-      setCurrentSlide((prev) => (prev + 1) % images.length);
-    };
+  const [direction, setDirection] = useState('right');
 
-    const prevSlide = () => {
-      setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
-    };
-
-    return (
-      <div className="relative h-full group">
-        <img
-          src={images[currentSlide]}
-          alt={`Slide ${currentSlide + 1}`}
-          loading="lazy"
-          className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
-          onError={(e) => {
-            e.target.style.display = 'none';
-          }}
-        />
-        
-        {/* Navigation Arrows */}
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
-            >
-              ←
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
-            >
-              →
-            </button>
-            
-            {/* Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-              {images.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    idx === currentSlide 
-                      ? 'bg-white w-6' 
-                      : 'bg-white/50 hover:bg-white/80'
-                  }`}
-                />
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-    );
+  const nextSlide = () => {
+    setDirection('right');
+    setCurrentSlide((prev) => (prev + 1) % images.length);
   };
 
+  const prevSlide = () => {
+    setDirection('left');
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  return (
+    <div className="relative h-full group overflow-hidden">
+      <div 
+        className="flex transition-transform duration-500 ease-in-out h-full"
+        style={{ 
+          transform: `translateX(-${currentSlide * 100}%)`,
+        }}
+      >
+        {images.map((img, idx) => (
+          <img
+            key={idx}
+            src={img}
+            alt={`Slide ${idx + 1}`}
+            className="w-full h-full object-cover flex-shrink-0"
+            onError={(e) => {
+              e.target.style.display = 'none';
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Navigation Arrows */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all z-10"
+          >
+            ←
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all z-10"
+          >
+            →
+          </button>
+          
+          {/* Dots */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  idx === currentSlide 
+                    ? 'bg-white w-6' 
+                    : 'bg-white/50 hover:bg-white/80'
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
   // Section Divider Component
   const SectionDivider = ({ icon: Icon, text }) => (
     <div className="relative py-12 flex items-center justify-center">
@@ -786,8 +798,6 @@ function App() {
                   <ImageCarousel 
                     images={eunoiaImages}
                     currentSlide={eunoiaSlide}
-                    loading="lazy" // Add this
-                    className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
                     setCurrentSlide={setEunoiaSlide}
                   />
                 </div>
@@ -835,8 +845,6 @@ function App() {
                   <ImageCarousel 
                     images={postureImages}
                     currentSlide={postureSlide}
-                    loading="lazy" // Add this
-                    className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
                     setCurrentSlide={setPostureSlide}
                     
                   />
