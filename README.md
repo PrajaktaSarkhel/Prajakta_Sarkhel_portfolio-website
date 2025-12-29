@@ -1,16 +1,42 @@
-# React + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal portfolio website built with modern web technologies.
 
-Currently, two official plugins are available:
+🔗 **Live Site**: [prajakta-sarkhel.vercel.app](https://prajakta-sarkhel.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- HTML5, CSS3, JavaScript
+- React.js
+- Tailwind CSS
+- Deployed on Vercel
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Responsive design
+- Project showcase
+- Skills and experience section
+- Contact information
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/PrajaktaSarkhel/portfolio-website.git
+
+# Install dependencies
+npm install
+
+# Run locally
+npm run dev
+```
+
+## Contact
+
+- **Email**: prajaktasarkhel@gmail.com
+- **LinkedIn**: [prajakta-sarkhel](https://linkedin.com/in/prajakta-sarkhel)
+- **GitHub**: [PrajaktaSarkhel](https://github.com/PrajaktaSarkhel)
+
+---
+
+⭐ Star this repo if you find it helpful!
