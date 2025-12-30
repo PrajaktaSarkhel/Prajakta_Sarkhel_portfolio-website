@@ -822,7 +822,7 @@ function App() {
                       <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       View Code
                     </a>
-                    <a href="https://eunoia-navy.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium group">
+                    <a href="https://eunoia-companion.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium group">
                       <Eye className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       View Project
                     </a>
