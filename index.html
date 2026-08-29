@@ -1,19 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/ps_logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prajakta Sarkhel | Portfolio</title>
+    <meta name="description" content="Prajakta Sarkhel - Software Engineer, Full-Stack Developer & Researcher. SDE Intern at Hunt Digital Media & LinkedIn CoachIn Mentee." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <title>Prajakta Sarkhel | Software Engineer</title>
   </head>
-  <body>
+  <body class="bg-[#090A10] text-slate-100 antialiased selection:bg-cyan-500/20 selection:text-cyan-300">
     <div id="root"></div>
 
     <script>
       const titles = [
-        "Prajakta | Portfolio",
-        "Prajakta | Full-stack Developer",
-        "Prajakta | Software Engineer"
+        "Prajakta Sarkhel | SDE & Researcher",
+        "Prajakta | Full-Stack & Backend",
+        "Prajakta | LinkedIn CoachIn Mentee"
       ];
 
       let currentIndex = 0;
@@ -26,20 +33,17 @@
 
       document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-          // User switched to another tab - show static message
           clearInterval(titleInterval);
-          document.title = "Hey there! 👋";
+          document.title = "Hey! Let's build together 👋";
         } else {
-          // User came back to the tab - resume rotation
           currentIndex = 0;
           rotateTitles();
-          titleInterval = setInterval(rotateTitles, 5000);
+          titleInterval = setInterval(rotateTitles, 4000);
         }
       });
 
-      // Start rotating titles when page loads
       rotateTitles();
-      titleInterval = setInterval(rotateTitles, 5000);
+      titleInterval = setInterval(rotateTitles, 4000);
     </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
