@@ -39,4 +39,8 @@ npm run dev
 
 ---
 
+<<<<<<< HEAD
 ⭐ Star this repo if you find it helpful!
+=======
+⭐ Star this repo if you find it helpful!
+>>>>>>> 360f885 (updated resume, image)

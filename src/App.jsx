@@ -357,7 +357,7 @@ function App() {
               Hi, I'm <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Prajakta</span>
             </h2>
             <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
-              I'm a CSE undergrad exploring full-stack development. Published two research papers, presented at IIM Calcutta.
+              I'm a CSE undergrad exploring Software development. Passionate about Full - stack Development, Backend Engineering and research related to Software Engineering. Published 3 research paper & 1 patent, presented at IIM Calcutta & NIT Durgapur.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
               <a href="#projects" className="group px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-xl hover:shadow-2xl hover:scale-105 transition-all text-center font-bold flex items-center justify-center gap-2">
@@ -382,7 +382,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl opacity-40 animate-pulse"></div>
              
               <img 
-                    src="/prajakta_avatar.png" 
+                    src="/prajakta_image.png" 
                     alt="Prajakta" 
                     className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-all rounded-full hover:scale-110 duration-500"
                     onError={(e) => {
@@ -703,11 +703,11 @@ function App() {
           {/* Enhanced Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-8 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-200 dark:border-blue-900 hover:scale-105 transition-all">
-              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">100+</div>
+              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">400+</div>
               <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">LeetCode Solved</div>
             </div>
             <div className="text-center p-8 rounded-xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-200 dark:border-purple-900 hover:scale-105 transition-all">
-              <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">2</div>
+              <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">3</div>
               <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">Research Papers</div>
             </div>
             <div className="text-center p-8 rounded-xl bg-gradient-to-br from-green-500/10 to-blue-500/10 border border-green-200 dark:border-green-900 hover:scale-105 transition-all">
