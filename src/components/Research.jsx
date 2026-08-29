@@ -22,7 +22,8 @@ export default function Research() {
       venue: 'AICTE - VAANI Conference',
       date: 'September 2025',
       status: 'Published',
-      hasPdf: false,
+      pdfUrl: '/The Role of Stimuli Responsive Materials for Biomedical Challenges.pdf',
+      hasPdf: true,
       accent: 'indigo',
       spotlight: 'rgba(99, 102, 241, 0.12)',
       description: 'Surveyed adaptive biomaterial behaviors under physiological stimuli, leveraging computational visualizations and AI-assisted data representations to model material responsiveness.'
@@ -71,7 +72,7 @@ export default function Research() {
             </div>
 
             {/* Action */}
-            <div className="pt-6 mt-6 border-t border-white/10 dark:border-white/10 border-slate-200 flex items-center justify-between">
+            <div className="pt-6 mt-6 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
               {paper.hasPdf ? (
                 <a
                   href={paper.pdfUrl}
@@ -83,7 +84,7 @@ export default function Research() {
                   <span>Download Paper (PDF)</span>
                 </a>
               ) : (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 dark:bg-white/5 bg-slate-100 text-slate-500 border border-white/10 dark:border-white/10 border-slate-200">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 border border-slate-300 dark:border-white/10 shadow-sm">
                   <span>Archived in Proceedings</span>
                 </span>
               )}

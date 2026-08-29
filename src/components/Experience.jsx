@@ -85,7 +85,7 @@ export default function Experience() {
               </div>
 
               <div className="text-left md:text-right">
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 dark:bg-white/5 bg-slate-100 border border-white/10 dark:border-white/10 border-slate-200 text-xs font-mono text-slate-700 dark:text-slate-300">
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300">
                   <Calendar className="w-3.5 h-3.5 text-slate-400" />
                   <span>{exp.period}</span>
                 </div>
@@ -107,11 +107,11 @@ export default function Experience() {
             </ul>
 
             {/* Tech Tags */}
-            <div className="mt-8 pt-6 border-t border-white/10 dark:border-white/10 border-slate-200 flex flex-wrap gap-2">
+            <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/10 flex flex-wrap gap-2">
               {exp.skills.map((skill, sIdx) => (
                 <span 
                   key={sIdx}
-                  className="px-3 py-1 rounded-lg text-xs font-mono bg-white/5 dark:bg-white/5 bg-slate-100 text-slate-700 dark:text-slate-300 border border-white/5 dark:border-white/10 border-slate-200 hover:border-cyan-500/30 transition-colors"
+                  className="px-3 py-1 rounded-lg text-xs font-mono font-medium bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-white/15 hover:border-cyan-500/50 dark:hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-400 shadow-sm transition-all"
                 >
                   {skill}
                 </span>

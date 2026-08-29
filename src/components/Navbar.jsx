@@ -47,7 +47,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
         className={`pointer-events-auto w-full max-w-5xl transition-all duration-300 rounded-full px-5 py-3 flex items-center justify-between border ${
           scrolled 
             ? 'bg-[#090A10]/85 dark:bg-[#090A10]/85 bg-white/85 backdrop-blur-xl border-white/10 dark:border-white/10 border-slate-200/80 shadow-2xl' 
-            : 'bg-[#0F131E]/60 dark:bg-[#0F131E]/60 bg-white/70 backdrop-blur-lg border-white/[0.06] dark:border-white/[0.06] border-slate-200/50'
+            : 'bg-white/80 dark:bg-[#0F131E]/60 backdrop-blur-lg border-slate-200/80 dark:border-white/[0.06]'
         }`}
       >
         {/* Logo */}
@@ -62,7 +62,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
         </a>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-1 bg-white/5 dark:bg-white/5 bg-slate-100/80 p-1 rounded-full border border-white/[0.04] dark:border-white/[0.04] border-slate-200/50">
+        <div className="hidden md:flex items-center gap-1 bg-slate-100/80 dark:bg-white/5 p-1 rounded-full border border-slate-200 dark:border-white/[0.04]">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.replace('#', '');
             return (

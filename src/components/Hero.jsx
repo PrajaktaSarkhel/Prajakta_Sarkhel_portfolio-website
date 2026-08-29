@@ -33,7 +33,7 @@ export default function Hero() {
 
           {/* Subtitle / Bio */}
           <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
-            Hi, I'm <span className="font-semibold text-slate-900 dark:text-white">Prajakta Sarkhel</span>, a Computer Science undergrad, <span className="text-cyan-600 dark:text-cyan-400 font-medium">SDE Intern at Hunt Digital Media</span>, and <span className="text-indigo-600 dark:text-indigo-400 font-medium">LinkedIn CoachIn Mentee</span>. I specialize in backend scalability, full-stack web applications, and applied software research.
+            Hi, I'm <span className="font-semibold text-slate-900 dark:text-white">Prajakta Sarkhel</span>, currently pursuing B. Tech in CSE. I specialize in backend scalability, full-stack web applications, and applied software research.
           </p>
 
           {/* CTA Buttons */}
@@ -113,14 +113,17 @@ export default function Hero() {
                 <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">
                   Prajakta Sarkhel
                 </h3>
+                <p className="text-sm font-medium text-cyan-600 dark:text-cyan-400 mt-0.5">
+                  Software Developer
+                </p>
                 <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1">
                   West Bengal, India · UTC+5:30
                 </p>
 
                 {/* Live Role Pill */}
-                <div className="mt-4 w-full p-3 rounded-xl bg-white/5 dark:bg-white/5 bg-slate-50 border border-white/10 dark:border-white/10 border-slate-200 flex items-center justify-between text-left">
+                <div className="mt-4 w-full p-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-between text-left">
                   <div>
-                    <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Current Focus</p>
+                    <p className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider">Current Focus</p>
                     <p className="text-xs font-semibold text-slate-800 dark:text-slate-200">Agentic Workflow · Multi-Agent System · AI Engineering</p>
                   </div>
                   <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />

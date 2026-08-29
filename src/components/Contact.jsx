@@ -128,9 +128,7 @@ export default function Contact() {
                 <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">
                   Send a Direct Message
                 </h3>
-                <p className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                  Fill in the details below to open your email client
-                </p>
+                
               </div>
             </div>
 
@@ -174,7 +172,7 @@ export default function Contact() {
                   rows="4"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Hi Prajakta, let's discuss an engineering role / collaboration..."
+                  placeholder="Let's discuss an engineering role / collaboration..."
                   className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border-2 border-slate-300 dark:border-white/15 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:bg-white dark:focus:bg-white/10 transition-all resize-none font-sans shadow-sm"
                 />
               </div>

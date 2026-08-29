@@ -37,8 +37,8 @@ export default function Projects() {
           <div className="grid lg:grid-cols-12 gap-0">
             
             {/* Carousel Column */}
-            <div className="lg:col-span-6 relative bg-black/40 min-h-[320px] sm:min-h-[400px] flex items-center justify-center p-4 sm:p-8 overflow-hidden group">
-              <div className="relative w-full h-full aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#090A10]">
+            <div className="lg:col-span-6 relative bg-slate-100/60 dark:bg-black/40 min-h-[320px] sm:min-h-[400px] flex items-center justify-center p-4 sm:p-8 overflow-hidden group">
+              <div className="relative w-full h-full aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl bg-[#090A10]">
                 {eunoiaImages.map((img, idx) => (
                   <img
                     key={idx}
@@ -121,7 +121,7 @@ export default function Projects() {
                 {/* Tech Pills */}
                 <div className="mt-6 flex flex-wrap gap-1.5">
                   {['JavaScript', 'HTML5', 'CSS3', 'Web Audio API', 'LocalStorage', 'Vercel'].map((tech) => (
-                    <span key={tech} className="px-2.5 py-1 rounded-md text-xs font-mono bg-white/5 dark:bg-white/5 bg-slate-100 text-slate-700 dark:text-slate-300 border border-white/10 dark:border-white/10 border-slate-200">
+                    <span key={tech} className="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-white/15 hover:border-cyan-500/40 transition-colors shadow-sm">
                       {tech}
                     </span>
                   ))}
@@ -129,7 +129,7 @@ export default function Projects() {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-8 mt-6 border-t border-white/10 dark:border-white/10 border-slate-200 flex flex-wrap items-center gap-4">
+              <div className="pt-8 mt-6 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-4">
                 <a
                   href="https://eunoia-companion.vercel.app/"
                   target="_blank"
@@ -143,7 +143,7 @@ export default function Projects() {
                   href="https://github.com/PrajaktaSarkhel/Eunoia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs bg-white/5 dark:bg-white/5 bg-slate-100 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-slate-200 text-slate-800 dark:text-slate-200 border border-white/10 dark:border-white/10 border-slate-300 transition-all hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-white/10 transition-all hover:scale-105 active:scale-95 shadow-sm"
                 >
                   <Github className="w-3.5 h-3.5" />
                   <span>Source Code</span>
@@ -188,7 +188,7 @@ export default function Projects() {
                 {/* Tech Pills */}
                 <div className="mt-6 flex flex-wrap gap-1.5">
                   {['IoT', 'Bluetooth Low Energy', 'Arduino', 'Python', 'Sensors', 'Hardware Architecture'].map((tech) => (
-                    <span key={tech} className="px-2.5 py-1 rounded-md text-xs font-mono bg-white/5 dark:bg-white/5 bg-slate-100 text-slate-700 dark:text-slate-300 border border-white/10 dark:border-white/10 border-slate-200">
+                    <span key={tech} className="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-white/15 hover:border-emerald-500/40 transition-colors shadow-sm">
                       {tech}
                     </span>
                   ))}
@@ -196,7 +196,7 @@ export default function Projects() {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-8 mt-6 border-t border-white/10 dark:border-white/10 border-slate-200 flex flex-wrap items-center gap-4">
+              <div className="pt-8 mt-6 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-4">
                 <a
                   href="/PosturePro.pdf"
                   target="_blank"
@@ -210,14 +210,14 @@ export default function Projects() {
             </div>
 
             {/* Carousel Column (Right on Desktop) */}
-            <div className="lg:col-span-6 relative bg-black/40 min-h-[320px] sm:min-h-[400px] flex items-center justify-center p-4 sm:p-8 overflow-hidden group order-1 lg:order-2">
-              <div className="relative w-full h-full aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#090A10]">
+            <div className="lg:col-span-6 relative bg-slate-100/60 dark:bg-black/40 min-h-[320px] sm:min-h-[400px] flex items-center justify-center p-4 sm:p-8 overflow-hidden group order-1 lg:order-2">
+              <div className="relative w-full h-full aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl bg-[#090A10] flex items-center justify-center">
                 {postureImages.map((img, idx) => (
                   <img
                     key={idx}
                     src={img}
                     alt={`PosturePro Preview ${idx + 1}`}
-                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out ${
+                    className={`absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out ${
                       idx === postureIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
                     }`}
                     onError={(e) => { e.target.style.display = 'none'; }}
