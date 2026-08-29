@@ -274,6 +274,15 @@ function App() {
 
   const journeyItems = [
     { 
+      date: 'February 2026 - Present', 
+      title: 'SDE Intern & LinkedIn CoachIn Mentee', 
+      desc: 'Developing high-throughput Go backend services at Hunt Digital Media and selected for the prestigious 6-month LinkedIn CoachIn Apprenticeship program.',
+      gradient: 'from-blue-600 via-indigo-600 to-purple-600',
+      bg: 'bg-indigo-100 dark:bg-indigo-900',
+      text: 'text-indigo-600 dark:text-indigo-400',
+      icon: Briefcase 
+    },
+    { 
       date: 'September 2025', 
       title: 'Presented at TSEC 2025, IIM Calcutta', 
       desc: 'Led team presentation for PosturePro at a national-level tech event.',
@@ -323,6 +332,7 @@ function App() {
           </h1>
           <div className="flex items-center gap-6">
             <a href="#about" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">About</a>
+            <a href="#experience" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Experience</a>
             <a href="#journey" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Journey</a>
             <a href="#projects" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Projects</a>
             <a href="#research" className="text-sm font-medium hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-all hidden sm:block">Research</a>
@@ -717,6 +727,122 @@ function App() {
             <div className="text-center p-8 rounded-xl bg-gradient-to-br from-pink-500/10 to-orange-500/10 border border-pink-200 dark:border-pink-900 hover:scale-105 transition-all">
               <div className="text-4xl font-bold text-pink-600 dark:text-pink-400 mb-2">4</div>
               <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">Open Source PRs</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION DIVIDER */}
+      <SectionDivider icon={Briefcase} text="Work Experience" />
+
+      {/* Experience Section */}
+      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50 dark:from-gray-900 dark:via-gray-850 dark:to-gray-900">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Experience</h3>
+            <p className="text-xl text-gray-600 dark:text-gray-300">Engineering scalable systems & technical apprenticeships 💼</p>
+          </div>
+
+          <div className="space-y-10">
+            {/* Experience Card 1: Hunt Digital Media */}
+            <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-gray-800 border-2 border-blue-200 dark:border-blue-800 hover:shadow-2xl hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-2 flex-wrap">
+                    <span className="px-4 py-1.5 bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full text-xs font-bold uppercase tracking-wider">
+                      Internship
+                    </span>
+                    <span className="px-3 py-1 bg-green-500/10 dark:bg-green-500/20 text-green-600 dark:text-green-400 rounded-full text-xs font-bold flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                      Current
+                    </span>
+                  </div>
+                  <h4 className="text-2xl sm:text-3xl font-black dark:text-white">SDE Intern</h4>
+                  <p className="text-lg font-bold text-blue-600 dark:text-blue-400">Hunt Digital Media</p>
+                </div>
+                <div className="text-left md:text-right">
+                  <span className="inline-block px-5 py-2 bg-blue-50 dark:bg-gray-900 text-blue-800 dark:text-blue-300 rounded-2xl text-sm font-bold shadow-sm border border-blue-200 dark:border-gray-700">
+                    Feb 2026 – Present
+                  </span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium">Remote</p>
+                </div>
+              </div>
+
+              <ul className="space-y-3 mb-8 text-gray-700 dark:text-gray-300">
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-500 mt-1 font-bold">▹</span>
+                  <span>Engineered and optimized core CRM systems processing high-volume Meta Ads leads, enabling reliable lead capture, distribution, and tracking across business workflows.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-500 mt-1 font-bold">▹</span>
+                  <span>Optimized backend architecture through Go-based services, increasing platform scalability from ~1K to 20K+ leads per day while improving system stability.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-500 mt-1 font-bold">▹</span>
+                  <span>Built secure authentication and automation solutions using Google OAuth, OTP verification, and Selenium-based workflows, reducing manual effort and enhancing user experience.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-500 mt-1 font-bold">▹</span>
+                  <span>Owned features across the product lifecycle, from requirement analysis and prioritization to development, QA, and deployment; gaining hands-on experience in product ownership and cross-functional collaboration.</span>
+                </li>
+              </ul>
+
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100 dark:border-gray-700">
+                {['Go', 'Google OAuth', 'Selenium', 'RESTful APIs', 'Backend Architecture', 'CRM Systems'].map(tech => (
+                  <span key={tech} className="px-3 py-1.5 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-semibold shadow-sm border border-gray-200 dark:border-gray-700">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Experience Card 2: LinkedIn CoachIn */}
+            <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-gray-800 border-2 border-purple-200 dark:border-purple-800 hover:shadow-2xl hover:border-purple-400 dark:hover:border-purple-600 transition-all duration-300">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-2 flex-wrap">
+                    <span className="px-4 py-1.5 bg-purple-500/20 text-purple-600 dark:text-purple-400 rounded-full text-xs font-bold uppercase tracking-wider">
+                      Apprenticeship
+                    </span>
+                    <span className="px-3 py-1 bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 rounded-full text-xs font-bold">
+                      6 mos
+                    </span>
+                  </div>
+                  <h4 className="text-2xl sm:text-3xl font-black dark:text-white">CoachIn Mentee</h4>
+                  <p className="text-lg font-bold text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
+                    <Linkedin className="w-5 h-5 inline text-[#0A66C2]" /> LinkedIn
+                  </p>
+                </div>
+                <div className="text-left md:text-right">
+                  <span className="inline-block px-5 py-2 bg-purple-50 dark:bg-gray-900 text-purple-800 dark:text-purple-300 rounded-2xl text-sm font-bold shadow-sm border border-purple-200 dark:border-gray-700">
+                    Feb 2026 – Jul 2026
+                  </span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium">Remote</p>
+                </div>
+              </div>
+
+              <ul className="space-y-3 mb-8 text-gray-700 dark:text-gray-300">
+                <li className="flex items-start gap-3">
+                  <span className="text-purple-500 mt-1 font-bold">▹</span>
+                  <span>Selected for the prestigious LinkedIn CoachIn mentorship program (6-month technical apprenticeship), receiving 1:1 mentorship from senior LinkedIn software engineers.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-purple-500 mt-1 font-bold">▹</span>
+                  <span>Underwent rigorous training in advanced Data Structures, Algorithms, System Design, and scalable software architecture best practices.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-purple-500 mt-1 font-bold">▹</span>
+                  <span>Collaborated on real-world engineering problem statements and qualified among the Top 20 Teams nationally in LinkedIn CoachIn Hackathon 2026.</span>
+                </li>
+              </ul>
+
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100 dark:border-gray-700">
+                {['Data Structures & Algorithms', 'System Design', 'Software Engineering Best Practices', 'Technical Mentorship', 'Hackathon Prototype'].map(tech => (
+                  <span key={tech} className="px-3 py-1.5 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-semibold shadow-sm border border-gray-200 dark:border-gray-700">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
