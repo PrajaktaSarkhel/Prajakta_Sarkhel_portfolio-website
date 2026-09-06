@@ -50,8 +50,12 @@ export default function Education() {
     }
   ];
 
+  const college = educationItems[0];
+  const schooling = educationItems.slice(1);
+  const CollegeIcon = college.icon;
+
   return (
-    <section id="education" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
+    <section id="education" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
       <SectionHeading
         badge="Academic Journey"
         title="Education &"
@@ -60,65 +64,118 @@ export default function Education() {
       />
 
       <div className="space-y-6">
-        {educationItems.map((edu) => {
-          const Icon = edu.icon;
-          return (
-            <SpotlightCard 
-              key={edu.step}
-              className="p-7 sm:p-9 transition-all duration-300 hover:border-cyan-500/30"
-              spotlightColor={edu.spotlight}
-            >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-white/10">
-                <div className="flex items-start gap-4">
-                  
-                  {/* Step Index Box */}
-                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 flex flex-col items-center justify-center shadow-sm">
-                    <span className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400">
-                      {edu.step}
-                    </span>
-                    <Icon className="w-4 h-4 text-slate-600 dark:text-slate-400 mt-0.5" />
-                  </div>
-
-                  <div>
-                    <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                      <Badge variant={edu.accent}>
-                        {edu.gradeLabel}: {edu.grade}
-                      </Badge>
-                      {edu.isCurrent && (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          Current Degree
-                        </span>
-                      )}
-                    </div>
-
-                    <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 dark:text-white">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-0.5">
-                      {edu.institution}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="text-left md:text-right pl-16 md:pl-0">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-xs font-mono font-medium text-slate-800 dark:text-slate-300 shadow-sm">
-                    <Calendar className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
-                    <span>{edu.period}</span>
-                  </div>
-                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1 flex items-center md:justify-end gap-1">
-                    <MapPin className="w-3 h-3" />
-                    {edu.location}
-                  </p>
-                </div>
+        {/* Card 01: Flagship Current Degree (Full Width) */}
+        <SpotlightCard 
+          className="p-7 sm:p-9 transition-all duration-300 hover:border-cyan-500/30"
+          spotlightColor={college.spotlight}
+        >
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-white/10">
+            <div className="flex items-start gap-4">
+              
+              {/* Step Index Box */}
+              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 flex flex-col items-center justify-center shadow-sm">
+                <span className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400">
+                  {college.step}
+                </span>
+                <CollegeIcon className="w-4 h-4 text-slate-600 dark:text-slate-400 mt-0.5" />
               </div>
 
-              <p className="mt-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                {edu.details}
+              <div>
+                <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                  <Badge variant={college.accent}>
+                    {college.gradeLabel}: {college.grade}
+                  </Badge>
+                  {college.isCurrent && (
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      Current Degree
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 dark:text-white">
+                  {college.degree}
+                </h3>
+                <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-0.5">
+                  {college.institution}
+                </p>
+              </div>
+            </div>
+
+            <div className="text-left md:text-right pl-16 md:pl-0">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-xs font-mono font-medium text-slate-800 dark:text-slate-300 shadow-sm">
+                <Calendar className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+                <span>{college.period}</span>
+              </div>
+              <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1 flex items-center md:justify-end gap-1">
+                <MapPin className="w-3 h-3" />
+                {college.location}
               </p>
-            </SpotlightCard>
-          );
-        })}
+            </div>
+          </div>
+
+          <p className="mt-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+            {college.details}
+          </p>
+        </SpotlightCard>
+
+        {/* Cards 02 & 03: Schooling Cards in One Line (Side by Side) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+          {schooling.map((edu) => {
+            const Icon = edu.icon;
+            return (
+              <SpotlightCard 
+                key={edu.step}
+                className="p-6 sm:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:border-cyan-500/30"
+                spotlightColor={edu.spotlight}
+              >
+                <div>
+                  {/* Header */}
+                  <div className="flex items-start gap-3.5 pb-5 border-b border-slate-200 dark:border-white/10">
+                    {/* Step Index Box */}
+                    <div className="flex-shrink-0 w-11 h-11 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 flex flex-col items-center justify-center shadow-sm">
+                      <span className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400">
+                        {edu.step}
+                      </span>
+                      <Icon className="w-4 h-4 text-slate-600 dark:text-slate-400 mt-0.5" />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="mb-2">
+                        <Badge variant={edu.accent}>
+                          {edu.gradeLabel}: {edu.grade}
+                        </Badge>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-display font-bold text-slate-900 dark:text-white leading-snug">
+                        {edu.degree}
+                      </h3>
+                      <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-1">
+                        {edu.institution}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Metadata bar: Period & Location */}
+                  <div className="flex items-center justify-between gap-2 py-3 border-b border-slate-200/60 dark:border-white/5 text-xs font-mono text-slate-600 dark:text-slate-400">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-800 dark:text-slate-300">
+                      <Calendar className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+                      <span>{edu.period}</span>
+                    </div>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-slate-400" />
+                      {edu.location}
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                    {edu.details}
+                  </p>
+                </div>
+              </SpotlightCard>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

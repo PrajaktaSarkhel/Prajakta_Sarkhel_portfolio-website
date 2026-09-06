@@ -82,7 +82,7 @@ export default function TechStack() {
   };
 
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative overflow-hidden">
+    <section id="skills" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative overflow-hidden">
       <SectionHeading
         badge="Technical Arsenal"
         title="Tools &"
@@ -91,7 +91,7 @@ export default function TechStack() {
       />
 
       {/* Category Tabs */}
-      <div className="flex items-center justify-center gap-2 flex-wrap mb-12">
+      <div className="flex items-center justify-center gap-2 flex-wrap mb-8">
         {categories.map((cat) => (
           <button
             key={cat.id}

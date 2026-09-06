@@ -52,8 +52,8 @@ function App() {
         <AboutBento />
         <Education />
         <Experience />
-        <Projects />
         <TechStack />
+        <Projects />
         <Research />
         <ArtGallery />
         <Contact />

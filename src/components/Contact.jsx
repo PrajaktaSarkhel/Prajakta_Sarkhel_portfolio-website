@@ -35,7 +35,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
+    <section id="contact" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
       <SectionHeading
         badge="Get in Touch"
         title="Let's Build Something"
