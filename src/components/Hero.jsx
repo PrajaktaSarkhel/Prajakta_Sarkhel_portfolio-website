@@ -4,7 +4,7 @@ import SpotlightCard from './ui/SpotlightCard';
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-[88vh] pt-32 sm:pt-36 pb-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[92vh] pt-32 sm:pt-40 pb-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden">
       {/* Ambient background glow orbs */}
       <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-cyan-500/10 dark:bg-cyan-500/10 blur-[130px] rounded-full" />
       <div className="pointer-events-none absolute top-1/3 right-1/4 w-[400px] h-[300px] bg-indigo-500/10 dark:bg-indigo-500/10 blur-[120px] rounded-full" />

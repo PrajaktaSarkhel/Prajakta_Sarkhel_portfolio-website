@@ -43,7 +43,7 @@ export default function StatsBento() {
   ];
 
   return (
-    <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <section className="py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {stats.map((stat, idx) => {
           const Icon = stat.icon;

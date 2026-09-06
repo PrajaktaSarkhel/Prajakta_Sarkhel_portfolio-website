@@ -17,7 +17,7 @@ export default function ArtGallery() {
   ];
 
   return (
-    <section id="art" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
+    <section id="art" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
       <SectionHeading
         badge="Creative Dimension"
         title="Fine Arts &"

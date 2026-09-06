@@ -42,7 +42,7 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
+    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
       <SectionHeading
         badge="Experience & Mentorship"
         title="Engineering"

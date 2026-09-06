@@ -5,7 +5,7 @@ import SpotlightCard from './ui/SpotlightCard';
 
 export default function AboutBento() {
   return (
-    <section id="about" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
       <SectionHeading
         badge="About Me"
         title="Engineering with"

@@ -449,7 +449,7 @@ export default function Projects() {
     : projectsData.filter(p => p.category === activeCategory);
 
   return (
-    <section id="projects" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
       {/* Background Ambient Glows */}
       <div className="pointer-events-none absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full" />
       <div className="pointer-events-none absolute bottom-1/4 right-10 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full" />
@@ -463,7 +463,7 @@ export default function Projects() {
       />
 
       {/* Category Filter Pills */}
-      <div className="flex items-center justify-center gap-2 flex-wrap mb-8">
+      <div className="flex items-center justify-center gap-2 flex-wrap mb-10">
         {categories.map((cat) => {
           const isActive = activeCategory === cat.id;
           return (

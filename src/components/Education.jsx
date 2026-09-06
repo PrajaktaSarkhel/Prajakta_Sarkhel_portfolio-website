@@ -55,7 +55,7 @@ export default function Education() {
   const CollegeIcon = college.icon;
 
   return (
-    <section id="education" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
+    <section id="education" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
       <SectionHeading
         badge="Academic Journey"
         title="Education &"
