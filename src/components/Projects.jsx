@@ -91,12 +91,10 @@ const projectsData = [
     tech: ['React', 'JavaScript', 'Tailwind CSS', 'Vercel'],
     images: [
       '/orbit_1.png',
-      '/orbit_2.png',
-      '/orbit_3.png',
-      '/orbit_4.png'
+      '/orbit_2.png'
     ],
     links: [
-      { label: 'Live Demo', url: 'https://orbit-social-app-8ebu.vercel.app/', icon: ExternalLink, primary: true },
+      { label: 'Live Demo', url: 'https://orbit-social-app.vercel.app/', icon: ExternalLink, primary: true },
       { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/orbit_social_app', icon: Github }
     ]
   },
