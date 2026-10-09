@@ -9,9 +9,9 @@ export default function Experience() {
       role: 'Software Development Engineer',
       company: 'Hunt Digital Media',
       employmentType: 'Full-time & Internship',
-      period: 'Feb 2026 – Present',
+      period: 'Feb 2026 – Oct 2026',
       location: 'Mumbai, IN · Remote',
-      isCurrent: true,
+      isCurrent: false,
       spotlight: 'rgba(0, 229, 255, 0.14)',
       logo: '/hunt_digital_media_logo.png',
       highlights: [

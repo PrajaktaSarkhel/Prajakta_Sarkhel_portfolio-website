@@ -16,66 +16,25 @@ import Badge from './ui/Badge';
 // 8 Streamlined Projects Data Definition
 const projectsData = [
   {
-    id: 'eunoia',
-    title: 'Eunoia',
-    category: 'web',
-    spotlightColor: 'rgba(0, 229, 255, 0.14)',
+    id: 'biblios',
+    title: 'Biblios',
+    category: 'ai-algo',
+    spotlightColor: 'rgba(244, 63, 94, 0.14)',
     badges: [
-      { label: 'Web Audio API', variant: 'cyan' },
-      { label: 'Mental Wellness', variant: 'indigo' }
+      { label: 'Insight App', variant: 'coral' },
+      { label: 'Complete', variant: 'amber' }
     ],
-    description: 'Interactive wellness app synthesizing harmonic frequencies and binaural soundscapes for relaxation and focus.',
-    tech: ['JavaScript', 'Web Audio API', 'CSS3', 'Vercel'],
+    description: 'Intelligent book insight platform extracting structured takeaways, chapter summaries, and core themes.',
+    tech: ['React', 'JavaScript', 'Tailwind CSS', 'UI/UX'],
     images: [
-      '/eunoia_1.png',
-      '/eunoia_2.png',
-      '/eunoia_3.png',
-      '/eunoia_4.png',
-      '/eunoia_5.png'
+      '/biblios_1.png',
+      '/biblios_2.png',
+      '/biblios_3.png',
+      '/biblios_4.png'
     ],
     links: [
-      { label: 'Launch App', url: 'https://eunoia-companion.vercel.app/', icon: ExternalLink, primary: true },
-      { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/Eunoia', icon: Github }
-    ]
-  },
-  {
-    id: 'posturepro',
-    title: 'PosturePro',
-    category: 'iot',
-    spotlightColor: 'rgba(16, 185, 129, 0.14)',
-    badges: [
-      { label: 'IoT Hardware', variant: 'emerald' },
-      { label: 'TSEC @ IIM-C', variant: 'amber' }
-    ],
-    description: 'IoT smart wearable actively monitoring spinal curvature with low-latency BLE haptic telemetry.',
-    tech: ['IoT', 'BLE', 'Arduino', 'Python'],
-    images: [
-      '/posturepro_1.png',
-      '/posturepro_2.png'
-    ],
-    links: [
-      { label: 'View Report (PDF)', url: '/PosturePro.pdf', icon: FileText, primary: true }
-    ]
-  },
-  {
-    id: 'alpha-car',
-    title: 'Alpha Car Showcase',
-    category: '3d',
-    spotlightColor: 'rgba(56, 189, 248, 0.14)',
-    badges: [
-      { label: '3D WebGL', variant: 'cyan' },
-      { label: 'Three.js', variant: 'indigo' }
-    ],
-    description: 'Interactive 3D automotive showcase featuring 360° orbital inspection, custom shaders, and dynamic lighting.',
-    tech: ['Three.js', 'React', 'WebGL', 'Tailwind'],
-    images: [
-      '/alpha_car_1.png',
-      '/alpha_car_2.png'
-    ],
-    videoUrl: '/alpha_car_video.mp4',
-    links: [
-      { label: 'Live Showcase', url: 'https://alpha-car-showcase.vercel.app/', icon: ExternalLink, primary: true },
-      { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/alpha-car-showcase', icon: Github }
+      { label: 'Live Demo', url: 'https://book-insight-app.vercel.app/', icon: ExternalLink, primary: true },
+      { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/book-insight-app', icon: Github }
     ]
   },
   {
@@ -99,43 +58,47 @@ const projectsData = [
     ]
   },
   {
-    id: 'lumina-finance',
-    title: 'Lumina Finance',
+    id: 'eunoia',
+    title: 'Eunoia',
     category: 'web',
-    spotlightColor: 'rgba(16, 185, 129, 0.14)',
+    spotlightColor: 'rgba(0, 229, 255, 0.14)',
     badges: [
-      { label: 'FinTech', variant: 'emerald' },
-      { label: 'Dashboard UI', variant: 'cyan' }
+      { label: 'Web Audio API', variant: 'cyan' },
+      { label: 'Mental Wellness', variant: 'indigo' }
     ],
-    description: 'Wealth management dashboard with real-time portfolio metrics, cash flow charts, and spending breakdown.',
-    tech: ['React', 'Data Viz', 'Tailwind CSS', 'Vercel'],
+    description: 'Interactive wellness app synthesizing harmonic frequencies and binaural soundscapes for relaxation and focus.',
+    tech: ['JavaScript', 'Web Audio API', 'CSS3', 'Vercel'],
     images: [
-      '/lumina_1.png'
+      '/eunoia_1.png',
+      '/eunoia_2.png',
+      '/eunoia_3.png',
+      '/eunoia_4.png',
+      '/eunoia_5.png'
     ],
     links: [
-      { label: 'Live Demo', url: 'https://lumina-finance-flax.vercel.app/', icon: ExternalLink, primary: true },
-      { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/lumina-finance', icon: Github }
+      { label: 'Launch App', url: 'https://eunoia-companion.vercel.app/', icon: ExternalLink, primary: true },
+      { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/Eunoia', icon: Github }
     ]
   },
   {
-    id: 'biblios',
-    title: 'Biblios',
-    category: 'ai-algo',
-    spotlightColor: 'rgba(244, 63, 94, 0.14)',
+    id: 'alpha-car',
+    title: 'Alpha Car Showcase',
+    category: '3d',
+    spotlightColor: 'rgba(56, 189, 248, 0.14)',
     badges: [
-      { label: 'Insight App', variant: 'coral' },
-      { label: 'Complete', variant: 'amber' }
+      { label: '3D WebGL', variant: 'cyan' },
+      { label: 'Three.js', variant: 'indigo' }
     ],
-    description: 'Intelligent book insight platform extracting structured takeaways, chapter summaries, and core themes.',
-    tech: ['React', 'JavaScript', 'Tailwind CSS', 'UI/UX'],
+    description: 'Interactive 3D automotive showcase featuring 360° orbital inspection, custom shaders, and dynamic lighting.',
+    tech: ['Three.js', 'React', 'WebGL', 'Tailwind'],
     images: [
-      '/biblios_1.png',
-      '/biblios_2.png',
-      '/biblios_3.png',
-      '/biblios_4.png'
+      '/alpha_car_1.png',
+      '/alpha_car_2.png'
     ],
+    videoUrl: '/alpha_car_video.mp4',
     links: [
-      { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/book-insight-app', icon: Github, primary: true }
+      { label: 'Live Showcase', url: 'https://alpha-car-showcase.vercel.app/', icon: ExternalLink, primary: true },
+      { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/alpha-car-showcase', icon: Github }
     ]
   },
   {
@@ -173,6 +136,44 @@ const projectsData = [
     isTerminal: true,
     links: [
       { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/binance_bot', icon: Github, primary: true }
+    ]
+  },
+  {
+    id: 'lumina-finance',
+    title: 'Lumina Finance',
+    category: 'web',
+    spotlightColor: 'rgba(16, 185, 129, 0.14)',
+    badges: [
+      { label: 'FinTech', variant: 'emerald' },
+      { label: 'Dashboard UI', variant: 'cyan' }
+    ],
+    description: 'Wealth management dashboard with real-time portfolio metrics, cash flow charts, and spending breakdown.',
+    tech: ['React', 'Data Viz', 'Tailwind CSS', 'Vercel'],
+    images: [
+      '/lumina_1.png'
+    ],
+    links: [
+      { label: 'Live Demo', url: 'https://lumina-finance-flax.vercel.app/', icon: ExternalLink, primary: true },
+      { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/lumina-finance', icon: Github }
+    ]
+  },
+  {
+    id: 'posturepro',
+    title: 'PosturePro',
+    category: 'iot',
+    spotlightColor: 'rgba(16, 185, 129, 0.14)',
+    badges: [
+      { label: 'IoT Hardware', variant: 'emerald' },
+      { label: 'TSEC @ IIM-C', variant: 'amber' }
+    ],
+    description: 'IoT smart wearable actively monitoring spinal curvature with low-latency BLE haptic telemetry.',
+    tech: ['IoT', 'BLE', 'Arduino', 'Python'],
+    images: [
+      '/posturepro_1.png',
+      '/posturepro_2.png'
+    ],
+    links: [
+      { label: 'View Report (PDF)', url: '/PosturePro.pdf', icon: FileText, primary: true }
     ]
   }
 ];
