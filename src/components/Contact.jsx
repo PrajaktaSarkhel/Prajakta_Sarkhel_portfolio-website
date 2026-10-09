@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Twitter, Instagram, Send, Copy, Check, Sparkles, MessageSquare } from 'lucide-react';
+import { Mail, Github, Linkedin, Twitter, Instagram, Send, Copy, Check, Sparkles, MessageSquare, Loader2, CheckCircle2, AlertCircle, ExternalLink } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import SpotlightCard from './ui/SpotlightCard';
 import CarouselReveal from './ui/CarouselReveal';
@@ -7,7 +7,8 @@ import CarouselReveal from './ui/CarouselReveal';
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [copied, setCopied] = useState(false);
-  const [formStatus, setFormStatus] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [formStatus, setFormStatus] = useState({ type: '', message: '' });
 
   const emailAddress = 'prajaktasarkhel@gmail.com';
 
@@ -17,15 +18,48 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const mailtoLink = `mailto:${emailAddress}?subject=Message from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(formData.email)}`;
-    window.location.href = mailtoLink;
-    setFormStatus('Opening your default email client... 🚀');
-    setTimeout(() => {
-      setFormData({ name: '', email: '', message: '' });
-      setFormStatus('');
-    }, 3000);
+    setLoading(true);
+    setFormStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/27e8435c8dabf579f2f0798693871577', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.success === 'true' || data.success === true || data.message)) {
+        setFormStatus({
+          type: 'success',
+          message: "Message sent directly to Prajakta's inbox! Thank you for reaching out."
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      console.error('Contact submission error:', err);
+      setFormStatus({
+        type: 'error',
+        message: 'Could not send automatically. You can click below to compose in Gmail Web directly.'
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const socials = [
@@ -85,6 +119,19 @@ export default function Contact() {
                 )}
               </button>
             </div>
+
+            <div className="mt-3 flex items-center justify-between text-xs font-mono px-1">
+              <span className="text-slate-500 dark:text-slate-400">Prefer browser webmail?</span>
+              <a
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-cyan-600 dark:text-cyan-400 hover:underline font-medium"
+              >
+                <span>Open Gmail in Web</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </SpotlightCard>
 
           {/* Social Profiles Grid */}
@@ -131,7 +178,6 @@ export default function Contact() {
                 <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">
                   Send a Direct Message
                 </h3>
-                
               </div>
             </div>
 
@@ -144,10 +190,11 @@ export default function Contact() {
                   <input
                     type="text"
                     required
+                    disabled={loading}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Alex Smith"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border-2 border-slate-300 dark:border-white/15 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:bg-white dark:focus:bg-white/10 transition-all font-sans shadow-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border-2 border-slate-300 dark:border-white/15 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:bg-white dark:focus:bg-white/10 transition-all font-sans shadow-sm disabled:opacity-60"
                   />
                 </div>
 
@@ -158,10 +205,11 @@ export default function Contact() {
                   <input
                     type="email"
                     required
+                    disabled={loading}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="alex@company.com"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border-2 border-slate-300 dark:border-white/15 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:bg-white dark:focus:bg-white/10 transition-all font-sans shadow-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border-2 border-slate-300 dark:border-white/15 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:bg-white dark:focus:bg-white/10 transition-all font-sans shadow-sm disabled:opacity-60"
                   />
                 </div>
               </div>
@@ -173,25 +221,62 @@ export default function Contact() {
                 <textarea
                   required
                   rows="4"
+                  disabled={loading}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Let's discuss an engineering role / collaboration..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border-2 border-slate-300 dark:border-white/15 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:bg-white dark:focus:bg-white/10 transition-all resize-none font-sans shadow-sm"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border-2 border-slate-300 dark:border-white/15 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:bg-white dark:focus:bg-white/10 transition-all resize-none font-sans shadow-sm disabled:opacity-60"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 px-6 rounded-xl font-semibold text-sm bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-glow-cyan transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2"
+                disabled={loading}
+                className="w-full py-3.5 px-6 rounded-xl font-semibold text-sm bg-cyan-500 hover:bg-cyan-400 disabled:opacity-60 disabled:cursor-not-allowed text-slate-950 shadow-glow-cyan transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" />
-                <span>Send Message</span>
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Sending Message...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    <span>Send Message</span>
+                  </>
+                )}
               </button>
 
-              {formStatus && (
-                <p className="text-center text-xs font-mono text-cyan-600 dark:text-cyan-400 pt-2 animate-pulse">
-                  {formStatus}
-                </p>
+              {formStatus.message && (
+                <div
+                  className={`p-4 rounded-xl border text-xs font-mono flex items-start gap-3 transition-all ${
+                    formStatus.type === 'success'
+                      ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
+                      : 'bg-rose-500/10 border-rose-500/30 text-rose-600 dark:text-rose-400'
+                  }`}
+                >
+                  {formStatus.type === 'success' ? (
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-500" />
+                  ) : (
+                    <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-rose-500" />
+                  )}
+                  <div className="flex-1 space-y-2">
+                    <p className="leading-relaxed">{formStatus.message}</p>
+                    {formStatus.type === 'error' && (
+                      <div className="pt-1 flex flex-wrap gap-2">
+                        <a
+                          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=${encodeURIComponent('Message from ' + (formData.name || 'Portfolio Visitor'))}&body=${encodeURIComponent(formData.message || '')}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-semibold text-xs hover:bg-cyan-400 transition-colors shadow-sm"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          <span>Compose in Gmail (Browser)</span>
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
               )}
             </form>
           </SpotlightCard>
