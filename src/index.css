@@ -134,3 +134,82 @@
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0%); }
 }
+
+/* ==========================================================================
+   Carousel Scroll Reveal & 3D Card Glide System
+   ========================================================================== */
+
+.carousel-reveal {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-reveal-up {
+  opacity: 0;
+  transform: translateY(44px) scale(0.96) rotateX(3.5deg);
+  filter: blur(3px);
+}
+
+.carousel-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px) scale(0.96) rotateY(3deg);
+  filter: blur(3px);
+}
+
+.carousel-reveal-right {
+  opacity: 0;
+  transform: translateX(40px) scale(0.96) rotateY(-3deg);
+  filter: blur(3px);
+}
+
+.carousel-reveal-scale {
+  opacity: 0;
+  transform: scale(0.92) rotateX(4deg);
+  filter: blur(3px);
+}
+
+.carousel-revealed {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) rotate(0deg) rotateX(0deg) rotateY(0deg) !important;
+  filter: blur(0px) !important;
+}
+
+/* Staggered Carousel Cards */
+.carousel-card {
+  opacity: 0;
+  transform: translateY(32px) scale(0.96) rotateX(3deg);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.carousel-revealed .carousel-card {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotateX(0);
+}
+
+/* Stagger delays for child cards inside a carousel group */
+.carousel-stagger-group .carousel-card:nth-child(1) { transition-delay: 50ms; }
+.carousel-stagger-group .carousel-card:nth-child(2) { transition-delay: 110ms; }
+.carousel-stagger-group .carousel-card:nth-child(3) { transition-delay: 170ms; }
+.carousel-stagger-group .carousel-card:nth-child(4) { transition-delay: 230ms; }
+.carousel-stagger-group .carousel-card:nth-child(5) { transition-delay: 290ms; }
+.carousel-stagger-group .carousel-card:nth-child(6) { transition-delay: 350ms; }
+.carousel-stagger-group .carousel-card:nth-child(7) { transition-delay: 410ms; }
+.carousel-stagger-group .carousel-card:nth-child(8) { transition-delay: 470ms; }
+
+/* Accessible Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-reveal,
+  .carousel-card {
+    transition: opacity 0.25s ease !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

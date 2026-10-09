@@ -1,6 +1,7 @@
 import React from 'react';
 import { Terminal, BookOpen, Award, Trophy, GitPullRequest, GraduationCap } from 'lucide-react';
 import SpotlightCard from './ui/SpotlightCard';
+import CarouselReveal from './ui/CarouselReveal';
 
 export default function StatsBento() {
   const stats = [
@@ -43,16 +44,17 @@ export default function StatsBento() {
   ];
 
   return (
-    <section className="py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        {stats.map((stat, idx) => {
-          const Icon = stat.icon;
-          return (
-            <SpotlightCard 
-              key={idx} 
-              className="p-6 transition-transform duration-300 hover:-translate-y-1"
-              spotlightColor={stat.spotlight}
-            >
+    <section id="stats" className="py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <CarouselReveal stagger direction="up">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {stats.map((stat, idx) => {
+            const Icon = stat.icon;
+            return (
+              <SpotlightCard 
+                key={idx} 
+                className="carousel-card p-6 transition-transform duration-300 hover:-translate-y-1"
+                spotlightColor={stat.spotlight}
+              >
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                   {stat.label}
@@ -71,6 +73,7 @@ export default function StatsBento() {
           );
         })}
       </div>
-    </section>
-  );
+    </CarouselReveal>
+  </section>
+);
 }

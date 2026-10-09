@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, FileText, Github, Linkedin, Mail, Sparkles, Terminal, Code2, Layers, Cpu } from 'lucide-react';
 import SpotlightCard from './ui/SpotlightCard';
+import CarouselReveal from './ui/CarouselReveal';
 
 export default function Hero() {
   return (
@@ -12,7 +13,7 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
         
         {/* Left Column: Headline & Action */}
-        <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <CarouselReveal direction="left" className="lg:col-span-7 space-y-6 text-center lg:text-left">
           
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20">
@@ -85,16 +86,16 @@ export default function Hero() {
               <Mail className="w-4 h-4" />
             </a>
           </div>
-        </div>
+        </CarouselReveal>
 
         {/* Right Column: Hero Profile Bento Card */}
-        <div className="lg:col-span-5 flex justify-center">
+        <CarouselReveal direction="right" className="lg:col-span-5 flex justify-center">
           <div className="relative w-full max-w-sm sm:max-w-md">
             
             {/* Ambient backlight */}
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-indigo-500/20 to-emerald-500/20 rounded-3xl blur-2xl opacity-60" />
 
-            <SpotlightCard className="p-6 md:p-8" spotlightColor="rgba(0, 229, 255, 0.15)">
+            <SpotlightCard className="carousel-card p-6 md:p-8" spotlightColor="rgba(0, 229, 255, 0.15)">
               <div className="flex flex-col items-center text-center">
                 
                 {/* Clean Circular Avatar without outer rectangular frame */}
@@ -131,7 +132,7 @@ export default function Hero() {
               </div>
             </SpotlightCard>
           </div>
-        </div>
+        </CarouselReveal>
 
       </div>
     </section>

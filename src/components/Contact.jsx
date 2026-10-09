@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Twitter, Instagram, Send, Copy, Check, Sparkles, MessageSquare } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import SpotlightCard from './ui/SpotlightCard';
+import CarouselReveal from './ui/CarouselReveal';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -36,20 +37,22 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
-      <SectionHeading
-        badge="Get in Touch"
-        title="Let's Build Something"
-        highlight="Remarkable"
-        subtitle="Always open to discussing software engineering roles, research collaborations, internships, and interesting tech ideas."
-      />
+      <CarouselReveal direction="up">
+        <SectionHeading
+          badge="Get in Touch"
+          title="Let's Build Something"
+          highlight="Remarkable"
+          subtitle="Always open to discussing software engineering roles, research collaborations, internships, and interesting tech ideas."
+        />
+      </CarouselReveal>
 
       <div className="grid lg:grid-cols-12 gap-8 items-start">
         
         {/* Left Column: Direct Links & Copy Email (Span 5) */}
-        <div className="lg:col-span-5 space-y-6">
+        <CarouselReveal direction="left" stagger className="lg:col-span-5 space-y-6">
           
           {/* Quick Copy Email Card */}
-          <SpotlightCard className="p-8" spotlightColor="rgba(0, 229, 255, 0.15)">
+          <SpotlightCard className="carousel-card p-8" spotlightColor="rgba(0, 229, 255, 0.15)">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
                 <Mail className="w-5 h-5" />
@@ -85,7 +88,7 @@ export default function Contact() {
           </SpotlightCard>
 
           {/* Social Profiles Grid */}
-          <SpotlightCard className="p-8" spotlightColor="rgba(99, 102, 241, 0.12)">
+          <SpotlightCard className="carousel-card p-8" spotlightColor="rgba(99, 102, 241, 0.12)">
             <h4 className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
               Connect on Socials
             </h4>
@@ -115,11 +118,11 @@ export default function Contact() {
             </div>
           </SpotlightCard>
 
-        </div>
+        </CarouselReveal>
 
         {/* Right Column: Contact Message Form (Span 7) */}
-        <div className="lg:col-span-7">
-          <SpotlightCard className="p-8 sm:p-10" spotlightColor="rgba(0, 229, 255, 0.12)">
+        <CarouselReveal direction="right" className="lg:col-span-7">
+          <SpotlightCard className="carousel-card p-8 sm:p-10" spotlightColor="rgba(0, 229, 255, 0.12)">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
                 <MessageSquare className="w-5 h-5" />
@@ -192,7 +195,7 @@ export default function Contact() {
               )}
             </form>
           </SpotlightCard>
-        </div>
+        </CarouselReveal>
 
       </div>
     </section>

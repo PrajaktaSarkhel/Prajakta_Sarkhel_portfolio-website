@@ -3,6 +3,7 @@ import { GraduationCap, Award, Calendar, MapPin, Trophy } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import SpotlightCard from './ui/SpotlightCard';
 import Badge from './ui/Badge';
+import CarouselReveal from './ui/CarouselReveal';
 
 export default function Education() {
   const educationItems = [
@@ -56,19 +57,22 @@ export default function Education() {
 
   return (
     <section id="education" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
-      <SectionHeading
-        badge="Academic Journey"
-        title="Education &"
-        highlight="Milestones"
-        subtitle="Consistent academic excellence and disciplined foundation across Computer Science and STEM."
-      />
+      <CarouselReveal direction="up">
+        <SectionHeading
+          badge="Academic Journey"
+          title="Education &"
+          highlight="Milestones"
+          subtitle="Consistent academic excellence and disciplined foundation across Computer Science and STEM."
+        />
+      </CarouselReveal>
 
-      <div className="space-y-6">
-        {/* Card 01: Flagship Current Degree (Full Width) */}
-        <SpotlightCard 
-          className="p-7 sm:p-9 transition-all duration-300 hover:border-cyan-500/30"
-          spotlightColor={college.spotlight}
-        >
+      <CarouselReveal stagger direction="up">
+        <div className="space-y-6">
+          {/* Card 01: Flagship Current Degree (Full Width) */}
+          <SpotlightCard 
+            className="carousel-card p-7 sm:p-9 transition-all duration-300 hover:border-cyan-500/30"
+            spotlightColor={college.spotlight}
+          >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-white/10">
             <div className="flex items-start gap-4">
               
@@ -126,7 +130,7 @@ export default function Education() {
             return (
               <SpotlightCard 
                 key={edu.step}
-                className="p-6 sm:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:border-cyan-500/30"
+                className="carousel-card p-6 sm:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:border-cyan-500/30"
                 spotlightColor={edu.spotlight}
               >
                 <div>
@@ -177,6 +181,7 @@ export default function Education() {
           })}
         </div>
       </div>
+      </CarouselReveal>
     </section>
   );
 }

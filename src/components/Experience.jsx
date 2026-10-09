@@ -2,6 +2,7 @@ import React from 'react';
 import { Calendar, MapPin } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import SpotlightCard from './ui/SpotlightCard';
+import CarouselReveal from './ui/CarouselReveal';
 
 export default function Experience() {
   const experiences = [
@@ -43,20 +44,23 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
-      <SectionHeading
-        badge="Experience & Mentorship"
-        title="Engineering"
-        highlight="At Scale"
-        subtitle="Hands-on industry experience building high-throughput backend services and training with world-class engineering mentors."
-      />
+      <CarouselReveal direction="up">
+        <SectionHeading
+          badge="Experience & Mentorship"
+          title="Engineering"
+          highlight="At Scale"
+          subtitle="Hands-on industry experience building high-throughput backend services and training with world-class engineering mentors."
+        />
+      </CarouselReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
-        {experiences.map((exp, idx) => (
-          <SpotlightCard 
-            key={idx}
-            className="p-6 sm:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:border-cyan-500/30"
-            spotlightColor={exp.spotlight}
-          >
+      <CarouselReveal stagger direction="up">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+          {experiences.map((exp, idx) => (
+            <SpotlightCard 
+              key={idx}
+              className="carousel-card p-6 sm:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:border-cyan-500/30"
+              spotlightColor={exp.spotlight}
+            >
             <div>
               {/* Header with Company Logo */}
               <div className="flex items-start gap-4 pb-5 border-b border-slate-200 dark:border-white/10">
@@ -128,7 +132,8 @@ export default function Experience() {
             </div>
           </SpotlightCard>
         ))}
-      </div>
+        </div>
+      </CarouselReveal>
     </section>
   );
 }

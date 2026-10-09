@@ -3,6 +3,7 @@ import { Palette, Award, Sparkles, Eye, X, ZoomIn } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import SpotlightCard from './ui/SpotlightCard';
 import Badge from './ui/Badge';
+import CarouselReveal from './ui/CarouselReveal';
 
 export default function ArtGallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -18,18 +19,20 @@ export default function ArtGallery() {
 
   return (
     <section id="art" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
-      <SectionHeading
-        badge="Creative Dimension"
-        title="Fine Arts &"
-        highlight="Design Engineering"
-        subtitle="How traditional studio art training cultivates focus, spatial awareness, and design sensitivity in software."
-      />
+      <CarouselReveal direction="up">
+        <SectionHeading
+          badge="Creative Dimension"
+          title="Fine Arts &"
+          highlight="Design Engineering"
+          subtitle="How traditional studio art training cultivates focus, spatial awareness, and design sensitivity in software."
+        />
+      </CarouselReveal>
 
       <div className="grid lg:grid-cols-12 gap-8 items-center">
         
         {/* Left Story Column (Span 6) */}
-        <div className="lg:col-span-6 space-y-6">
-          <SpotlightCard className="p-8" spotlightColor="rgba(244, 63, 94, 0.12)">
+        <CarouselReveal direction="left" stagger className="lg:col-span-6 space-y-6">
+          <SpotlightCard className="carousel-card p-8" spotlightColor="rgba(244, 63, 94, 0.12)">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400">
                 <Palette className="w-5 h-5" />
@@ -59,7 +62,7 @@ export default function ArtGallery() {
             </div>
           </SpotlightCard>
 
-          <SpotlightCard className="p-8" spotlightColor="rgba(245, 158, 11, 0.12)">
+          <SpotlightCard className="carousel-card p-8" spotlightColor="rgba(245, 158, 11, 0.12)">
             <div className="flex items-center gap-3 mb-3">
               <Sparkles className="w-5 h-5 text-amber-400" />
               <h4 className="text-lg font-display font-bold text-slate-900 dark:text-white">
@@ -70,14 +73,14 @@ export default function ArtGallery() {
               Handmade art requires hours of patient, millimeter-precise brushwork. That same discipline translates directly to writing clean code, paying attention to edge cases, and crafting frictionless UI/UX architectures.
             </p>
           </SpotlightCard>
-        </div>
+        </CarouselReveal>
 
         {/* Right Artwork Showcase Column (Span 6) */}
-        <div className="lg:col-span-6">
+        <CarouselReveal direction="right" className="lg:col-span-6">
           {artWorks.map((art, idx) => (
             <SpotlightCard 
               key={idx}
-              className="p-6 overflow-hidden group cursor-pointer"
+              className="carousel-card p-6 overflow-hidden group cursor-pointer"
               spotlightColor="rgba(244, 63, 94, 0.15)"
               onClick={() => setSelectedImage(art.image)}
             >
@@ -111,7 +114,7 @@ export default function ArtGallery() {
               </div>
             </SpotlightCard>
           ))}
-        </div>
+        </CarouselReveal>
 
       </div>
 

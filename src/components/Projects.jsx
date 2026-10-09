@@ -12,6 +12,7 @@ import {
 import SectionHeading from './ui/SectionHeading';
 import SpotlightCard from './ui/SpotlightCard';
 import Badge from './ui/Badge';
+import CarouselReveal from './ui/CarouselReveal';
 
 // 8 Streamlined Projects Data Definition
 const projectsData = [
@@ -280,7 +281,7 @@ function ProjectCard({ project }) {
 
   return (
     <SpotlightCard 
-      className="flex flex-col h-full overflow-hidden border border-slate-200/80 dark:border-white/10 bg-white/90 dark:bg-[#0F131E]/80 backdrop-blur-xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 group"
+      className="carousel-card flex flex-col h-full overflow-hidden border border-slate-200/80 dark:border-white/10 bg-white/90 dark:bg-[#0F131E]/80 backdrop-blur-xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 group"
       spotlightColor={project.spotlightColor || 'rgba(0, 229, 255, 0.12)'}
     >
       {/* Media Preview Container */}
@@ -453,45 +454,49 @@ export default function Projects() {
       <div className="pointer-events-none absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full" />
       <div className="pointer-events-none absolute bottom-1/4 right-10 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full" />
 
-      {/* Header */}
-      <SectionHeading
-        badge="Featured Engineering"
-        title="Impact-Driven"
-        highlight="Projects"
-        subtitle="Full-stack web applications, 3D graphics, IoT prototypes, and algorithmic trading systems."
-      />
+      {/* Header & Categories */}
+      <CarouselReveal direction="up">
+        <SectionHeading
+          badge="Featured Engineering"
+          title="Impact-Driven"
+          highlight="Projects"
+          subtitle="Full-stack web applications, 3D graphics, IoT prototypes, and algorithmic trading systems."
+        />
 
-      {/* Category Filter Pills */}
-      <div className="flex items-center justify-center gap-2 flex-wrap mb-10">
-        {categories.map((cat) => {
-          const isActive = activeCategory === cat.id;
-          return (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium transition-all duration-200 flex items-center gap-2 border ${
-                isActive
-                  ? 'bg-cyan-500 text-slate-950 border-cyan-400 shadow-glow-cyan scale-105 font-bold'
-                  : 'bg-white/80 dark:bg-white/5 text-slate-600 dark:text-slate-300 border-slate-300 dark:border-white/10 hover:border-cyan-500/40 hover:bg-cyan-500/5'
-              }`}
-            >
-              <span>{cat.label}</span>
-              <span className={`px-1.5 py-0.2 text-[10px] rounded-full ${
-                isActive ? 'bg-slate-950/20 text-slate-950 font-bold' : 'bg-slate-200 dark:bg-white/10 text-slate-500 dark:text-slate-400'
-              }`}>
-                {cat.count}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+        {/* Category Filter Pills */}
+        <div className="flex items-center justify-center gap-2 flex-wrap mb-10">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium transition-all duration-200 flex items-center gap-2 border ${
+                  isActive
+                    ? 'bg-cyan-500 text-slate-950 border-cyan-400 shadow-glow-cyan scale-105 font-bold'
+                    : 'bg-white/80 dark:bg-white/5 text-slate-600 dark:text-slate-300 border-slate-300 dark:border-white/10 hover:border-cyan-500/40 hover:bg-cyan-500/5'
+                }`}
+              >
+                <span>{cat.label}</span>
+                <span className={`px-1.5 py-0.2 text-[10px] rounded-full ${
+                  isActive ? 'bg-slate-950/20 text-slate-950 font-bold' : 'bg-slate-200 dark:bg-white/10 text-slate-500 dark:text-slate-400'
+                }`}>
+                  {cat.count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </CarouselReveal>
 
       {/* Vertical Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+      <CarouselReveal stagger direction="up">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </CarouselReveal>
 
       {/* Bottom GitHub Archive Banner */}
       <div className="mt-14 text-center">
