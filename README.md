@@ -13,10 +13,11 @@ My personal portfolio website built with modern web technologies.
 
 ## Features
 
-- Responsive design
-- Project showcase
-- Skills and experience section
-- Contact information
+- Responsive design with fluid 3D carousel scroll reveals & card glide motion
+- Project showcase with live demos and repository links
+- **Research & Intellectual Property**: 4 Research Papers & 2 Patents Published
+- Technical skills, experience timeline, and academic standing
+- Direct contact and social links
 
 ## Getting Started
 
@@ -39,8 +40,4 @@ npm run dev
 
 ---
 
-<<<<<<< HEAD
 ⭐ Star this repo if you find it helpful!
-=======
-⭐ Star this repo if you find it helpful!
->>>>>>> 360f885 (updated resume, image)

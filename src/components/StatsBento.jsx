@@ -16,7 +16,7 @@ export default function StatsBento() {
     },
     {
       label: 'Research & Patents',
-      value: '3 Papers · 1 Patent',
+      value: '4 Papers · 2 Patents',
       sub: 'NCCCI-2025 & AICTE VAANI',
       icon: BookOpen,
       color: 'text-indigo-400',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, FileText, Download, Award, Sparkles, ExternalLink, ShieldCheck } from 'lucide-react';
+import { FileText, Download } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import SpotlightCard from './ui/SpotlightCard';
 import Badge from './ui/Badge';
@@ -44,7 +44,7 @@ export default function Research() {
 
       {/* Publications Grid */}
       <CarouselReveal stagger direction="up">
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-8">
           {publications.map((paper, idx) => (
             <SpotlightCard 
               key={idx}
@@ -97,37 +97,6 @@ export default function Research() {
         ))}
         </div>
       </CarouselReveal>
-
-      {/* Patent & Recognition Callout Card */}
-      <CarouselReveal direction="up">
-        <SpotlightCard className="carousel-card p-8 sm:p-10 border-cyan-500/20" spotlightColor="rgba(0, 229, 255, 0.15)">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 text-white shadow-glow-cyan">
-                <Award className="w-6 h-6" />
-              </div>
-              <div>
-                <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-1">
-                  <span>Intellectual Property</span>
-                </div>
-                <h4 className="text-xl font-display font-bold text-slate-900 dark:text-white">
-                  1 Patent Published & National Presentations
-                </h4>
-                <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-2xl font-normal">
-                  Authored 1 intellectual patent publication and presented scholarly findings across prestigious national stages including <span className="font-semibold text-slate-900 dark:text-white">IIM Calcutta</span> and <span className="font-semibold text-slate-900 dark:text-white">NIT Durgapur</span>.
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex-shrink-0">
-              <Badge variant="emerald" className="text-xs px-3 py-1.5">
-                Verified Scholar
-              </Badge>
-            </div>
-          </div>
-        </SpotlightCard>
-      </CarouselReveal>
-
     </section>
   );
 }
