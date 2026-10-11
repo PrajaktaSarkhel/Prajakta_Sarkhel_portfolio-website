@@ -22,11 +22,11 @@ const projectsData = [
     category: 'ai-algo',
     spotlightColor: 'rgba(244, 63, 94, 0.14)',
     badges: [
-      { label: 'Insight App', variant: 'coral' },
-      { label: 'Complete', variant: 'amber' }
+      { label: 'Book Intelligence', variant: 'coral' },
+      { label: 'Semantic Search', variant: 'amber' }
     ],
-    description: 'Intelligent book insight platform extracting structured takeaways, chapter summaries, and core themes.',
-    tech: ['React', 'JavaScript', 'Tailwind CSS', 'UI/UX'],
+    description: 'Gen AI-powered book intelligence & RAG platform extracting context-aware insights, chapter summaries, and interactive Q&A.',
+    tech: ['React', 'Gen AI / RAG', 'Claude API', 'Tailwind CSS'],
     images: [
       '/biblios_1.png',
       '/biblios_2.png',
@@ -44,11 +44,11 @@ const projectsData = [
     category: 'web',
     spotlightColor: 'rgba(139, 92, 246, 0.14)',
     badges: [
-      { label: 'Full-Stack Web', variant: 'indigo' },
-      { label: 'Social Network', variant: 'cyan' }
+      { label: 'Social Platform', variant: 'indigo' },
+      { label: 'Optimistic UI', variant: 'cyan' }
     ],
-    description: 'Modern social networking platform with real-time timelines, multimedia posts, and community engagement.',
-    tech: ['React', 'JavaScript', 'Tailwind CSS', 'Vercel'],
+    description: 'Full-stack social networking platform featuring 0ms optimistic UI updates, engagement-ranked feeds, and community interactions.',
+    tech: ['React', 'Node.js', 'Express', 'Tailwind CSS'],
     images: [
       '/orbit_1.png',
       '/orbit_2.png'
@@ -64,10 +64,10 @@ const projectsData = [
     category: 'web',
     spotlightColor: 'rgba(0, 229, 255, 0.14)',
     badges: [
-      { label: 'Web Audio API', variant: 'cyan' },
-      { label: 'Mental Wellness', variant: 'indigo' }
+      { label: 'Web Audio Synthesis', variant: 'cyan' },
+      { label: 'Guided Journaling', variant: 'indigo' }
     ],
-    description: 'Interactive wellness app synthesizing harmonic frequencies and binaural soundscapes for relaxation and focus.',
+    description: 'Interactive wellness web application synthesizing harmonic soundscapes via Web Audio API alongside guided daily journaling.',
     tech: ['JavaScript', 'Web Audio API', 'CSS3', 'Vercel'],
     images: [
       '/eunoia_1.png',
