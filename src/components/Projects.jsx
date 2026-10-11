@@ -96,7 +96,6 @@ const projectsData = [
       '/alpha_car_1.png',
       '/alpha_car_2.png'
     ],
-    videoUrl: '/alpha_car_video.mp4',
     links: [
       { label: 'Live Showcase', url: 'https://alpha-car-showcase.vercel.app/', icon: ExternalLink, primary: true },
       { label: 'Source Code', url: 'https://github.com/PrajaktaSarkhel/alpha-car-showcase', icon: Github }
@@ -285,7 +284,7 @@ function ProjectCard({ project }) {
       spotlightColor={project.spotlightColor || 'rgba(0, 229, 255, 0.12)'}
     >
       {/* Media Preview Container */}
-      <div className="relative w-full aspect-[16/10] bg-slate-100 dark:bg-[#080B12] overflow-hidden border-b border-slate-200 dark:border-white/10">
+      <div className="relative w-full aspect-[16/10] bg-slate-100 dark:bg-[#080B12] overflow-hidden border-b border-slate-200/80 dark:border-white/10 select-none">
         
         {/* Scenario 1: Binance Bot Terminal Visual */}
         {project.isTerminal ? (
@@ -316,7 +315,9 @@ function ProjectCard({ project }) {
                 key={idx}
                 src={img}
                 alt={`${project.title} Preview ${idx + 1}`}
-                className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out ${
+                loading="lazy"
+                decoding="async"
+                className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-500 ease-out ${
                   idx === imgIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
                 }`}
                 onError={(e) => {
